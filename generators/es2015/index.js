@@ -18,12 +18,10 @@ module.exports = class ES2015 extends Generator {
     const {name} = this.options
     const camelName = camelCase(name)
 
-    console.log('name', name)
-
     const ch = utils.copyHelper(this)
 
     ch('gitignore', '.gitignore')
-    ch('eslintrc.js', '.eslintrs.js')
+    ch('eslintrc.js', '.eslintrc.js')
     ch('babelrc', '.babelrc')
     ch('README.md', 'README.md', { camelName, name })
     ch('static/index.html', 'static/index.html', { camelName })

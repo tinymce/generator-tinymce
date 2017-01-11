@@ -29,7 +29,7 @@ module.exports = class PluginGenerator extends Generator {
         name: 'name',
         message: 'Plugin name:',
         default: path.basename(process.cwd()),
-        filter: kebabCase,
+        filter: str => kebabCase(str),
         validate: str => str.length > 0
       },
       {
@@ -46,6 +46,13 @@ module.exports = class PluginGenerator extends Generator {
             value: 'ts'
           }
         ]
+      },
+      {
+        name: 'yarn',
+        type: 'confirm',
+        message: 'Use yarn instead of npm?',
+        default: false,
+        when: !this.options.yarn
       }
     ]
 
@@ -62,10 +69,12 @@ module.exports = class PluginGenerator extends Generator {
   }
 
   install () {
+    const useYarn = this.options.yarn || this.props.yarn
+
     this.installDependencies({
       bower: false,
-      yarn: this.options.yarn,
-      npm: !this.options.yarn
+      yarn: useYarn,
+      npm: !useYarn
     })
   }
 }
