@@ -13,6 +13,16 @@ const handleDir = ctx => {
   }
 }
 
+const copyHelper = ctx =>
+  (from, dest, opts = {}) => {
+    ctx.fs.copyTpl(
+          ctx.templatePath(from),
+          ctx.destinationPath(dest),
+          opts
+        )
+  }
+
 module.exports = {
-  handleDir
+  handleDir,
+  copyHelper
 }

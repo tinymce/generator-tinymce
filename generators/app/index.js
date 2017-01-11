@@ -4,7 +4,6 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
 const kebabCase = require('lodash.kebabcase')
-const R = require('ramda')
 
 const utils = require('../../utils/utils')
 
@@ -21,10 +20,9 @@ module.exports = class PluginGenerator extends Generator {
   }
 
   prompting () {
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the\n' + chalk.red('TinyMCE plugin') + '\ngenerator!'
-    ))
+    this.log(
+      yosay('Welcome to the\n' + chalk.red('TinyMCE plugin') + '\ngenerator!')
+      )
 
     var prompts = [
       {
@@ -51,32 +49,16 @@ module.exports = class PluginGenerator extends Generator {
       }
     ]
 
-    return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
+    return this.prompt(prompts).then(props => {
       this.props = props
-    }.bind(this))
+    })
   }
 
   default () {
     utils.handleDir(this)
 
-    const {language} = this.props
-
-    if (R.equals(language, 'es2015')) {
-      this.composeWith(require.resolve('../es2015'), { name: this.props.name })
-    } else {
-      console.log('TS not available yet')
-    }
-
+    this.composeWith(require.resolve('../' + this.props.language), { name: this.props.name })
     this.composeWith(require.resolve('generator-license/app'), {output: 'src/LICENSE'})
-  }
-
-  writing () {
-
-    // this.fs.copy(
-    //   this.templatePath('dummyfile.txt'),
-    //   this.destinationPath(kebabCase(name) + '.txt')
-    // )
   }
 
   install () {

@@ -1,27 +1,27 @@
 {
   "name": "<%= name %>",
-  "version": "0.0.1",
-  "description": "<%= camelName %> TinyMCE plugin repo",
+  "version": "1.0.0",
+  "description": "<%= camelName %> TinyMCE plugin",
+  "main": "index.js",
   "scripts": {
+    "postinstall": "typings install",
     "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --open",
-    "lint": "eslint 'src/**/*.js'",
+    "lint": "tslint 'src/**/*.js'",
     "build": "webpack --config config/webpack.config.prod.js --progress"
   },
   "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
     "copy-webpack-plugin": "^4.0.1",
-    "eslint": "^3.12.2",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
     "html-webpack-plugin": "^2.26.0",
+    "ts-loader": "^1.3.3",
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4",
+    "typings": "^2.1.0",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "lodash.kebabcase": "^4.1.1"
+    "lodash": "^4.17.4"
   }
 }
