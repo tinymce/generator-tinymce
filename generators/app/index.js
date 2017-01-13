@@ -11,9 +11,16 @@ module.exports = class PluginGenerator extends Generator {
   constructor (args, opts) {
     super(args, opts)
 
+    this.option('skip-git', {
+      type: Boolean,
+      desc: 'Skip git repo init',
+      required: false,
+      default: false
+    })
+
     this.option('yarn', {
       type: Boolean,
-      desc: 'Use yarn instead of npm as a package manager',
+      desc: 'Use yarn instead of npm',
       required: false,
       default: false
     })
@@ -37,14 +44,8 @@ module.exports = class PluginGenerator extends Generator {
         message: 'What\'s your jam?',
         type: 'list',
         choices: [
-          {
-            name: 'ES2015',
-            value: 'es2015'
-          },
-          {
-            name: 'TypeScript',
-            value: 'ts'
-          }
+          { name: 'ES2015', value: 'es2015' },
+          { name: 'TypeScript', value: 'ts' }
         ]
       },
       {
@@ -53,6 +54,13 @@ module.exports = class PluginGenerator extends Generator {
         message: 'Use yarn instead of npm?',
         default: false,
         when: !this.options.yarn
+      },
+      {
+        name: 'skipGit',
+        type: 'confirm',
+        message: 'Skip git repo initialization?',
+        default: false,
+        when: !this.options.skipGit
       }
     ]
 
@@ -63,18 +71,27 @@ module.exports = class PluginGenerator extends Generator {
 
   default () {
     utils.handleDir(this)
+    const { name, language } = this.props
 
-    this.composeWith(require.resolve('../' + this.props.language), { name: this.props.name })
-    this.composeWith(require.resolve('generator-license/app'), {output: 'src/LICENSE'})
+    this.composeWith(require.resolve('../' + language), { name })
+    this.composeWith(require.resolve('generator-license/app'), { output: 'src/LICENSE' })
   }
 
   install () {
     const useYarn = this.options.yarn || this.props.yarn
+    const skipGit = this.options.skipGit || this.props.skipGit
 
     this.installDependencies({
       bower: false,
       yarn: useYarn,
       npm: !useYarn
     })
+
+    if (!skipGit) {
+      utils.gitInit(
+        this,
+        `Initial commit on ${this.props.name} TinyMCE plugin.`
+      )
+    }
   }
 }

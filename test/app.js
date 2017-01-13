@@ -71,3 +71,36 @@ describe('generator-tiny-plugin:app es2015', function () {
     assert.fileContent('README.md', '# coolPlugin')
   })
 })
+
+describe('generator-tiny-plugin:app do not skip git', function () {
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/app'))
+      .withPrompts({
+        name: 'cool-plugin',
+        language: 'es2015',
+        license: 'MIT'
+      })
+      .toPromise()
+  })
+
+  it('creates git repo', function () {
+    assert.file('.git')
+  })
+})
+
+describe('generator-tiny-plugin:app skip git', function () {
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/app'))
+      .withOptions({ skipGit: true })
+      .withPrompts({
+        name: 'cool-plugin',
+        language: 'es2015',
+        license: 'MIT'
+      })
+      .toPromise()
+  })
+
+  it('does not create git repo', function () {
+    assert.noFile('.git')
+  })
+})

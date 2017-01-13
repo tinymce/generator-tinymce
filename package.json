@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "chalk": "^1.1.3",
-    "generator-license": "file:../generator-license",
+    "generator-license": "git://github.com/jozefizso/generator-license",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "mkdirp": "^0.5.1",
