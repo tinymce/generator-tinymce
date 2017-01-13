@@ -7,6 +7,7 @@ const handleDir = ctx => {
   const {name} = ctx.props
   if (path.basename(ctx.destinationPath()) !== name) {
     ctx.log(
+      '\n' +
       chalk.green('!') + ' Your plugin must be inside a directory \n' +
       chalk.green('!') + ' with the same name as the plugin: ' + chalk.blue(name) + '\n' +
       chalk.green('!') + ' I\'ll automatically create this directory for you.\n'
@@ -29,7 +30,11 @@ const gitInit = (ctx, message = 'Initial commit.') => {
   ctx.spawnCommandSync('git', ['init', '--quiet'])
   ctx.spawnCommandSync('git', ['add', '--all'])
   ctx.spawnCommandSync('git', ['commit', '-m', message, '--quiet'])
-  ctx.log(chalk.green('success') + ' Created git repository!')
+  ctx.log(
+    '\n' +
+    chalk.green('success') + ' Created git repository!' +
+    '\n'
+    )
 }
 
 module.exports = {

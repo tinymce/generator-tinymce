@@ -74,18 +74,14 @@ module.exports = class PluginGenerator extends Generator {
     const { name, language } = this.props
 
     this.composeWith(require.resolve('../' + language), { name })
-    this.composeWith(require.resolve('generator-license/app'), { output: 'src/LICENSE' })
+    this.composeWith(
+      require.resolve('generator-license/app'),
+        { output: 'src/LICENSE', defaultLicense: 'GPL-3.0' })
   }
 
   install () {
     const useYarn = this.options.yarn || this.props.yarn
     const skipGit = this.options.skipGit || this.props.skipGit
-
-    this.installDependencies({
-      bower: false,
-      yarn: useYarn,
-      npm: !useYarn
-    })
 
     if (!skipGit) {
       utils.gitInit(
@@ -93,5 +89,15 @@ module.exports = class PluginGenerator extends Generator {
         `Initial commit on ${this.props.name} TinyMCE plugin.`
       )
     }
+
+    this.installDependencies({
+      bower: false,
+      yarn: useYarn,
+      npm: !useYarn
+    })
+  }
+
+  end () {
+    this.log('bye!')
   }
 }
