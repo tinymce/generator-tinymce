@@ -3,7 +3,7 @@ const Generator = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
-const kebabCase = require('lodash.kebabcase')
+const _ = require('lodash')
 
 const utils = require('../../utils/utils')
 
@@ -36,7 +36,7 @@ module.exports = class PluginGenerator extends Generator {
         name: 'name',
         message: 'Plugin name:',
         default: path.basename(process.cwd()),
-        filter: str => kebabCase(str),
+        filter: str => _.kebabCase(str),
         validate: str => str.length > 0
       },
       {
@@ -45,7 +45,8 @@ module.exports = class PluginGenerator extends Generator {
         type: 'list',
         choices: [
           { name: 'ES2015', value: 'es2015' },
-          { name: 'TypeScript', value: 'ts' }
+          { name: 'TypeScript', value: 'ts' },
+          { name: 'bolt', value: 'bolt' }
         ]
       },
       {
@@ -72,11 +73,12 @@ module.exports = class PluginGenerator extends Generator {
   default () {
     utils.handleDir(this)
     const { name, language } = this.props
+    const licenseOutput = language === 'bolt' ? 'src/text/license.txt' : 'src/LICENSE'
 
     this.composeWith(require.resolve('../' + language), { name })
     this.composeWith(
       require.resolve('generator-license/app'),
-        { output: 'src/LICENSE', defaultLicense: 'GPL-3.0' })
+        { output: licenseOutput, defaultLicense: 'GPL-3.0' })
   }
 
   install () {

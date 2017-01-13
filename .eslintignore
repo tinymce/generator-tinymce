@@ -1,1 +1,1 @@
-generators/ts/templates
+**/templates/**/*.js

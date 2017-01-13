@@ -1,0 +1,2 @@
+# <%= camelName %> TinyMCE plugin readme
+

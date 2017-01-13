@@ -1,6 +1,6 @@
 'use strict'
 const Generator = require('yeoman-generator')
-const camelCase = require('lodash.camelcase')
+const _ = require('lodash')
 const utils = require('../../utils/utils')
 
 module.exports = class TypeScript extends Generator {
@@ -16,7 +16,7 @@ module.exports = class TypeScript extends Generator {
 
   initializing () {
     const {name} = this.options
-    const camelName = camelCase(name)
+    const camelName = _.camelCase(name)
 
     const ch = utils.copyHelper(this)
 

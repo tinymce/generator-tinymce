@@ -1,0 +1,13 @@
+*.sublime-*
+*.diff
+*.patch
+*.bak
+*.log
+yarn.lock
+.DS_Store
+node_modules
+**/bolt/bootstrap*.js
+**/dist
+**/lib
+**/scratch
+/dependency
