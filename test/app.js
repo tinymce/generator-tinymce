@@ -113,6 +113,7 @@ describe('generator-tiny-plugin:app bolt', function () {
     assert.fileContent('README.md', '# coolPlugin')
 
     assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox/tinymce\', \'../../node_modules/tinymce\', mapper.constant(\'../../node_modules/tinymce/tinymce\')),')
+    assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox\', \'../../node_modules/@ephox\', mapper.repo(\'js\', mapper.flat))')
   })
 })
 
@@ -160,6 +161,8 @@ describe('generator-tiny-plugin:app bolt with --internal flag', function () {
 
   it('has correct name in package.json etc', () => {
     assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox/tinymce\', \'\', mapper.constant(\'../../../../../tinymce\')),')
+    assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox\', \'../../lib/test\', mapper.flat)')
+    assert.fileContent('src/test/.eslintrc', '"extends": "../../../../../../.eslintrc"')
     // assert.fileContent('package.json', '"name": "cool-plugin"')
     // assert.fileContent('config/webpack.config.prod.js', 'const pluginName = \'cool-plugin\'')
     // assert.fileContent('README.md', '# coolPlugin')

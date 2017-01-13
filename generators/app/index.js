@@ -61,14 +61,14 @@ module.exports = class PluginGenerator extends Generator {
         type: 'confirm',
         message: 'Use yarn instead of npm?',
         default: false,
-        when: !this.options.yarn
+        when: !this.options.yarn && !this.options.internal
       },
       {
         name: 'skipGit',
         type: 'confirm',
         message: 'Skip git repo initialization?',
         default: false,
-        when: !this.options.skipGit
+        when: !this.options.skipGit && !this.options.internal
       }
     ]
 
@@ -95,6 +95,7 @@ module.exports = class PluginGenerator extends Generator {
   install () {
     const useYarn = this.options.yarn || this.props.yarn
     const skipGit = this.options.skipGit || this.props.skipGit
+    const {internal} = this.options
 
     if (!skipGit && !this.options.internal) {
       utils.gitInit(
@@ -103,10 +104,12 @@ module.exports = class PluginGenerator extends Generator {
       )
     }
 
-    this.installDependencies({
-      bower: false,
-      yarn: useYarn,
-      npm: !useYarn
-    })
+    if (!internal) {
+      this.installDependencies({
+        bower: false,
+        yarn: useYarn,
+        npm: !useYarn
+      })
+    }
   }
 }

@@ -27,7 +27,7 @@ module.exports = class Bolt extends Generator {
 
     ch('config/bolt/atomic.js', 'config/bolt/atomic.js')
     ch('config/bolt/browser.js', 'config/bolt/browser.js', { internal })
-    ch('config/bolt/demo.js', 'config/bolt/demo.js', { camelName })
+    ch('config/bolt/demo.js', 'config/bolt/demo.js', { camelName, internal })
     ch('config/bolt/prod.js', 'config/bolt/prod.js', { camelName })
     ch('src/demo/html/demo.html', 'src/demo/html/demo.html', { camelName, name })
     ch('src/demo/js/tinymce/name.demo.Demo.js', 'src/demo/js/tinymce/' + name + '/demo/Demo.js', { camelName, name })
@@ -36,7 +36,7 @@ module.exports = class Bolt extends Generator {
     ch('src/main/less/content.less', 'src/main/less/content.less', { name })
     ch('src/test/js/atomic/core/AdderTest.js', 'src/test/js/atomic/core/AdderTest.js', { camelName })
     ch('src/test/js/browser/plugin/PluginTest.js', 'src/test/js/atomic/browser/PluginTest.js', { camelName })
-    ch('src/test/eslintrc', 'src/test/.eslintrc')
+    ch('src/test/eslintrc', 'src/test/.eslintrc', { internal })
 
     if (!internal) {
       ch('editorconfig', '.editorconfig')

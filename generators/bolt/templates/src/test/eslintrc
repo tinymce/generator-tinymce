@@ -10,5 +10,6 @@
     "asynctest": true
   },
 
-  "extends": "../../.eslintrc"
+  <% if (!internal) { %>"extends": "../../.eslintrc"<% }%>
+  <% if (internal) { %>"extends": "../../../../../../.eslintrc"<% }%>
 }
