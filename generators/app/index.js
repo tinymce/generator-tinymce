@@ -24,6 +24,13 @@ module.exports = class PluginGenerator extends Generator {
       required: false,
       default: false
     })
+
+    this.option('internal', {
+      type: Boolean,
+      desc: 'Are you creating a core plugin?',
+      required: false,
+      default: false
+    })
   }
 
   prompting () {
@@ -75,17 +82,21 @@ module.exports = class PluginGenerator extends Generator {
     const { name, language } = this.props
     const licenseOutput = language === 'bolt' ? 'src/text/license.txt' : 'src/LICENSE'
 
-    this.composeWith(require.resolve('../' + language), { name })
-    this.composeWith(
-      require.resolve('generator-license/app'),
-        { output: licenseOutput, defaultLicense: 'GPL-3.0' })
+    this.composeWith(require.resolve('../' + language), { name, internal: this.options.internal })
+
+    if (!this.options.internal) {
+      this.composeWith(
+        require.resolve('generator-license/app'),
+        { output: licenseOutput, defaultLicense: 'GPL-3.0' }
+      )
+    }
   }
 
   install () {
     const useYarn = this.options.yarn || this.props.yarn
     const skipGit = this.options.skipGit || this.props.skipGit
 
-    if (!skipGit) {
+    if (!skipGit && !this.options.internal) {
       utils.gitInit(
         this,
         `Initial commit on ${this.props.name} TinyMCE plugin.`
@@ -97,9 +108,5 @@ module.exports = class PluginGenerator extends Generator {
       yarn: useYarn,
       npm: !useYarn
     })
-  }
-
-  end () {
-    this.log('bye!')
   }
 }

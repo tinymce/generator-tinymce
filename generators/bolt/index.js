@@ -12,16 +12,21 @@ module.exports = class Bolt extends Generator {
       required: true,
       desc: 'Name of the plugin'
     })
+
+    this.option('internal', {
+      type: Boolean,
+      required: true,
+      desc: 'Is it a core plugin?'
+    })
   }
 
-  initializing () {
-    const {name} = this.options
+  default () {
+    const {name, internal} = this.options
     const camelName = _.camelCase(name)
-
     const ch = utils.copyHelper(this)
 
     ch('config/bolt/atomic.js', 'config/bolt/atomic.js')
-    ch('config/bolt/browser.js', 'config/bolt/browser.js')
+    ch('config/bolt/browser.js', 'config/bolt/browser.js', { internal })
     ch('config/bolt/demo.js', 'config/bolt/demo.js', { camelName })
     ch('config/bolt/prod.js', 'config/bolt/prod.js', { camelName })
     ch('src/demo/html/demo.html', 'src/demo/html/demo.html', { camelName, name })
@@ -32,12 +37,14 @@ module.exports = class Bolt extends Generator {
     ch('src/test/js/atomic/core/AdderTest.js', 'src/test/js/atomic/core/AdderTest.js', { camelName })
     ch('src/test/js/browser/plugin/PluginTest.js', 'src/test/js/atomic/browser/PluginTest.js', { camelName })
     ch('src/test/eslintrc', 'src/test/.eslintrc')
-    ch('editorconfig', '.editorconfig')
-    ch('eslintignore', '.eslintignore')
-    ch('eslintrc', '.eslintrc')
-    ch('Gruntfile.js', 'Gruntfile.js', { camelName, name })
-    ch('_package.json', 'package.json', { camelName, name })
-    ch('README.md', 'README.md', { camelName })
-  }
 
+    if (!internal) {
+      ch('editorconfig', '.editorconfig')
+      ch('eslintignore', '.eslintignore')
+      ch('eslintrc', '.eslintrc')
+      ch('Gruntfile.js', 'Gruntfile.js', { camelName, name })
+      ch('_package.json', 'package.json', { camelName, name })
+      ch('README.md', 'README.md', { camelName })
+    }
+  }
 }
