@@ -1,5 +1,5 @@
 define('tinymce.<%= camelName %>.demo.Demo', [
-  'ephox/tinymce',
+  'global!tinymce',
   'tinymce.<%= camelName %>.plugin.Plugin'
 ], function (tinymce, Plugin) { // eslint-disable-line no-unused-vars
   return function () {

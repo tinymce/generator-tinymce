@@ -8,6 +8,13 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: packageData,
 
+    watch: {
+      files: ['src/**/*.js'],
+      options: {
+        livereload: 35729
+      }
+    },
+
     eslint: {
       options: {
         config: '.eslintrc'

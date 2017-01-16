@@ -3,28 +3,20 @@ asynctest('browser.plugin.PluginTest', [
   'ephox.mcagar.api.TinyLoader',
   'ephox.agar.api.Pipeline',
   'ephox.mcagar.api.TinyApis',
-  'ephox.mcagar.api.TinyActions',
-  'ephox.agar.api.RawAssertions',
-  'ephox.agar.api.Step'
+  'ephox.mcagar.api.TinyUi'
 ], function (
-  Plugin, TinyLoader, Pipeline, TinyApis, TinyActions, RawAssertions, Step
+  Plugin, TinyLoader, Pipeline, TinyApis, TinyUi
 ) {
   var success = arguments[arguments.length - 2];
   var failure = arguments[arguments.length - 1];
 
-  var sCheckEditorContent = function (editor, expected) {
-    return Step.sync(function () {
-      var actual = editor.getContent();
-      RawAssertions.assertEq('Content should be same', expected, actual);
-    });
-  };
-
   TinyLoader.setup(function (editor, onSuccess, onFailure) {
-    // var tinyApis = TinyApis(editor);
-    // var tinyActions = TinyActions(editor);
+    var tinyApis = TinyApis(editor);
+    var tinyUi = TinyUi(editor);
 
     Pipeline.async({}, [
-      sCheckEditorContent(editor, 'hej')
+      tinyUi.sClickOnToolbar('click on button', 'button'),
+      tinyApis.sAssertContent('<p>hi from <%= camelName %>!</p>')
     ], onSuccess, onFailure);
   }, {
     plugins: '<%= camelName %>',
