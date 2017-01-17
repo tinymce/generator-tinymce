@@ -1,5 +1,5 @@
-# generator-tiny-plugin [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Bootstrap your TinyMCE plugin
+# generator-tiny-plugin [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] 
+> Bootstrap your TinyMCE plugin!
 
 ## Installation
 
@@ -16,13 +16,6 @@ Then generate your new project:
 yo tiny-plugin
 ```
 
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
 ## License
 
 Apache-2.0 © [Mattias]()
@@ -32,5 +25,3 @@ Apache-2.0 © [Mattias]()
 [npm-url]: https://npmjs.org/package/generator-tiny-plugin
 [travis-image]: https://travis-ci.org//generator-tiny-plugin.svg?branch=master
 [travis-url]: https://travis-ci.org//generator-tiny-plugin
-[daviddm-image]: https://david-dm.org//generator-tiny-plugin.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org//generator-tiny-plugin

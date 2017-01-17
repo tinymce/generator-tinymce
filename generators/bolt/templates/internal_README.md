@@ -13,7 +13,7 @@ And this line to the `subgrunt` part of the Gruntfile:
 '<%= name %>-plugin': {path: 'js/tinymce/plugins/<%= name %>'}
 ```
 
-Also add the following to the array of paths in`tools/bolt/config/browser.js`:
+Also add the following to the array of paths in `tools/bolt/config/browser.js`:
 ```js
 '../../../js/tinymce/plugins/<%= name %>/config/bolt/browser.js'
 ```
