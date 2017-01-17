@@ -16,11 +16,6 @@ Then generate your new project:
 yo tiny-plugin
 ```
 
-## License
-
-Apache-2.0 © [Mattias]()
-
-
 [npm-image]: https://badge.fury.io/js/generator-tiny-plugin.svg
 [npm-url]: https://npmjs.org/package/generator-tiny-plugin
 [travis-image]: https://travis-ci.org//generator-tiny-plugin.svg?branch=master

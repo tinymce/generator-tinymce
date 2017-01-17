@@ -1,13 +1,8 @@
 {
   "name": "generator-tiny-plugin",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Bootstrap your TinyMCE plugin",
-  "homepage": "",
-  "author": {
-    "name": "Mattias",
-    "email": "mattias.wikstrom@ephox.com",
-    "url": ""
-  },
+  "author": "Ephox Corporation",
   "files": [
     "generators"
   ],
