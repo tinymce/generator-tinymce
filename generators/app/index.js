@@ -4,8 +4,7 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
 const _ = require('lodash')
-
-const utils = require('../../utils')
+const utils = require(path.join(__dirname, '../../utils'))
 
 module.exports = class PluginGenerator extends Generator {
   constructor (args, opts) {
@@ -36,7 +35,7 @@ module.exports = class PluginGenerator extends Generator {
   prompting () {
     this.log(
       yosay('Welcome to the\n' + chalk.red('TinyMCE plugin') + '\ngenerator!')
-      )
+    )
 
     var prompts = [
       {
