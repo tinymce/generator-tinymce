@@ -1,7 +1,7 @@
 'use strict'
 const Generator = require('yeoman-generator')
 const _ = require('lodash')
-const utils = require('../../utils/utils')
+const utils = require('../../utils')
 
 module.exports = class ES2015 extends Generator {
   constructor (args, opts) {
@@ -31,5 +31,4 @@ module.exports = class ES2015 extends Generator {
     ch('config/webpack.config.prod.js', 'config/webpack.config.prod.js', { name })
     ch('_package.json', 'package.json', { name, camelName })
   }
-
 }

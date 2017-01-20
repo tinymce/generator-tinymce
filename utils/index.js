@@ -38,7 +38,7 @@ const gitInit = (ctx, message = 'Initial commit.') => {
 }
 
 module.exports = {
-  handleDir,
-  copyHelper,
-  gitInit
+  handleDir: handleDir,
+  copyHelper: copyHelper,
+  gitInit: gitInit
 }

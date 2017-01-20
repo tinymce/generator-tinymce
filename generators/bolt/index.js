@@ -1,7 +1,7 @@
 'use strict'
 const Generator = require('yeoman-generator')
 const _ = require('lodash')
-const utils = require('../../utils/utils')
+const utils = require('../../utils')
 
 module.exports = class Bolt extends Generator {
   constructor (args, opts) {
