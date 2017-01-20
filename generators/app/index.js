@@ -4,7 +4,7 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 const path = require('path')
 const _ = require('lodash')
-const utils = require(path.join(__dirname, '../../utils'))
+const utils = require('../../utils')
 
 module.exports = class PluginGenerator extends Generator {
   constructor (args, opts) {

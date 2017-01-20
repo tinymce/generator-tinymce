@@ -1,8 +1,7 @@
 'use strict'
 const Generator = require('yeoman-generator')
 const _ = require('lodash')
-const path = require('path')
-const utils = require(path.join(__dirname, '../../utils'))
+const utils = require('../../utils')
 
 module.exports = class ES2015 extends Generator {
   constructor (args, opts) {

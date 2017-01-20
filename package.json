@@ -4,7 +4,8 @@
   "description": "Bootstrap your TinyMCE plugin",
   "author": "Ephox Corporation",
   "files": [
-    "generators"
+    "generators",
+    "utils"
   ],
   "main": "generators/index.js",
   "keywords": [
@@ -39,7 +40,7 @@
   },
   "repository": "/generator-tiny-plugin",
   "scripts": {
-    "prepublish": "gulp prepublish",
+    "prepublishOnly": "gulp prepublish",
     "test": "gulp"
   },
   "license": "Apache-2.0"
