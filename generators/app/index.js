@@ -87,7 +87,7 @@ module.exports = class PluginGenerator extends Generator {
     if (!this.options.internal) {
       this.composeWith(
         require.resolve('generator-license/app'),
-        { output: licenseOutput, defaultLicense: 'GPL-3.0' }
+        { output: licenseOutput, defaultLicense: 'MIT' }
       )
     }
   }

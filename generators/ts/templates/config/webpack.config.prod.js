@@ -14,13 +14,13 @@ module.exports = {
     filename: "[name].js"
   },
   resolve: {
-    extensions: ["", ".webpack.js", ".web.js", ".ts", ".js"]
+    extensions: [".webpack.js", ".web.js", ".ts", ".js"]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader"
+        use: "ts-loader"
       }
     ]
   },
