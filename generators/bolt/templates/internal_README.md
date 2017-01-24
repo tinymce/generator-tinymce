@@ -17,3 +17,8 @@ Also add the following to the array of paths in `tools/bolt/config/browser.js`:
 ```js
 '../../../js/tinymce/plugins/<%= name %>/config/bolt/browser.js'
 ```
+
+Finally, add this line to the `.gitignore` file to ignore the built plugin:
+```js
+'js/tinymce/plugins/<%= name %>/plugin.js'
+```

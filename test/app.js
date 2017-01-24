@@ -166,6 +166,7 @@ describe('generator-tiny-plugin:app bolt with --internal flag', function () {
     assert.fileContent('src/test/.eslintrc', '"extends": "../../../../../../.eslintrc"')
     assert.fileContent('Gruntfile.js', 'src: ["src/main/js/tinymce/cool-plugin/Plugin.js"]')
     assert.fileContent('README.md', '\'cool-plugin-plugin\': {path: \'js/tinymce/plugins/cool-plugin\'}')
+    assert.fileContent('README.md', 'js/tinymce/plugins/cool-plugin/plugin.js')
   })
 })
 
