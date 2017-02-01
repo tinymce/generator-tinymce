@@ -32,7 +32,7 @@ module.exports = class Bolt extends Generator {
     ch('src/demo/html/demo.html', 'src/demo/html/demo.html', { camelName, name })
     ch('src/demo/js/tinymce/name.demo.Demo.js', 'src/demo/js/tinymce/' + camelName + '/demo/Demo.js', { camelName, name })
     ch('src/main/js/tinymce/name.core.Adder.js', 'src/main/js/tinymce/' + camelName + '/core/Adder.js', { camelName })
-    ch('src/main/js/tinymce/name.plugin.Plugin.js', 'src/main/js/tinymce/' + camelName + '/plugin/Plugin.js', { camelName })
+    ch('src/main/js/tinymce/name.Plugin.js', 'src/main/js/tinymce/' + camelName + '/Plugin.js', { camelName })
     ch('src/main/less/content.less', 'src/main/less/content.less', { name })
     ch('src/test/js/atomic/core/AdderTest.js', 'src/test/js/atomic/core/AdderTest.js', { camelName })
     ch('src/test/js/browser/plugin/PluginTest.js', 'src/test/js/browser/plugin/PluginTest.js', { camelName })
