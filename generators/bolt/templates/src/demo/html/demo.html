@@ -2,10 +2,9 @@
 <html>
   <head>
     <title>TinyMCE <%= name %> Demo Page</title>
-    <script src="../../../../../tinymce.dev.js"></script>
     <script src="../../../config/bolt/bootstrap-demo.js"></script>
     <script>
-      ephox.bolt.module.api.main('tinymce.<%= camelName %>.demo.Demo');
+      ephox.bolt.module.api.main('tinymce.plugins.<%= camelName %>.demo.Demo');
     </script>
     <style>
       textarea.editor {

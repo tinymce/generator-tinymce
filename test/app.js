@@ -90,9 +90,9 @@ describe('generator-tiny-plugin:app bolt', function () {
       'config/bolt/demo.js',
       'config/bolt/prod.js',
       'src/demo/html/demo.html',
-      'src/demo/js/tinymce/coolPlugin/demo/Demo.js',
-      'src/main/js/tinymce/coolPlugin/core/Adder.js',
-      'src/main/js/tinymce/coolPlugin/Plugin.js',
+      'src/demo/js/demo/Demo.js',
+      'src/main/js/core/Adder.js',
+      'src/main/js/Plugin.js',
       'src/main/less/content.less',
       'src/test/js/atomic/core/AdderTest.js',
       'src/test/js/browser/plugin/PluginTest.js',
@@ -109,9 +109,7 @@ describe('generator-tiny-plugin:app bolt', function () {
 
   it('has correct name in package.json etc', function () {
     assert.fileContent('package.json', '"name": "cool-plugin"')
-    // assert.fileContent('config/webpack.config.prod.js', 'const pluginName = \'cool-plugin\'')
     assert.fileContent('README.md', '# coolPlugin')
-
     assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox/tinymce\', \'../../node_modules/tinymce\', mapper.constant(\'../../node_modules/tinymce/tinymce\')),')
     assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox\', \'../../node_modules/@ephox\', mapper.repo(\'js\', mapper.flat))')
     assert.fileContent('src/test/js/browser/plugin/PluginTest.js', 'tinyApis.sAssertContent(\'<p>hi from coolPlugin!</p>\')')
@@ -138,10 +136,11 @@ describe('generator-tiny-plugin:app bolt with --internal flag', function () {
       'config/bolt/browser.js',
       'config/bolt/demo.js',
       'config/bolt/prod.js',
+      'config/bolt/test.js',
       'src/demo/html/demo.html',
-      'src/demo/js/tinymce/coolPlugin/demo/Demo.js',
-      'src/main/js/tinymce/coolPlugin/core/Adder.js',
-      'src/main/js/tinymce/coolPlugin/Plugin.js',
+      'src/demo/js/demo/Demo.js',
+      'src/main/js/core/Adder.js',
+      'src/main/js/Plugin.js',
       'src/main/less/content.less',
       'src/test/js/atomic/core/AdderTest.js',
       'src/test/js/browser/plugin/PluginTest.js',
@@ -161,12 +160,11 @@ describe('generator-tiny-plugin:app bolt with --internal flag', function () {
   })
 
   it('has correct name in package.json etc', function () {
-    assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox/tinymce\', \'\', mapper.constant(\'../../../../../tinymce\')),')
-    assert.fileContent('config/bolt/browser.js', 'source(\'amd\', \'ephox\', \'../../../../../../node_modules/@ephox\', mapper.repo(\'js\', mapper.flat))')
-    assert.fileContent('src/test/.eslintrc', '"extends": "../../../../../../.eslintrc"')
-    assert.fileContent('Gruntfile.js', 'src: ["src/main/js/tinymce/cool-plugin/Plugin.js"]')
+    assert.fileContent('src/test/.eslintrc', '"extends": "../../../../../.eslintrc"')
+    assert.fileContent('Gruntfile.js', 'src: ["src/main/js/Plugin.js"]')
     assert.fileContent('README.md', '\'cool-plugin-plugin\': {path: \'js/tinymce/plugins/cool-plugin\'}')
     assert.fileContent('README.md', 'js/tinymce/plugins/cool-plugin/plugin.js')
+    assert.fileContent('src/demo/js/demo/Demo.js', 'CoolPluginPlugin();')
   })
 })
 
