@@ -52,7 +52,7 @@ describe('generator-tiny-plugin:app es2015', function () {
   it('creates files', function () {
     assert.file([
       'package.json',
-      '.eslintrc.js',
+      '.eslintrc',
       '.babelrc',
       'README.md',
       '.gitignore',

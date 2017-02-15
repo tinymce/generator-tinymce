@@ -1,24 +1,24 @@
-import _ from 'lodash'
+import _ from 'lodash';
 
-const plugin = (editor, url) => {
+const plugin = (editor) => {
   editor.addButton('<%= camelName %>', {
-    text: 'Kebabify',
+    text: '<%= camelName %>',
     icon: false,
     onclick: () => {
       // Open window
       editor.windowManager.open({
-        title: 'Kebabify',
+        title: '<%= camelName %> plugin',
         body: [
-          {type: 'textbox', name: 'title'}
+          { type: 'textbox', name: 'title' }
         ],
-        onsubmit (e) {
+        onsubmit(e) {
           // Insert content when the window form is submitted
-          const kebabbyString = _.kebabCase(e.data.title)
-          editor.insertContent(kebabbyString)
+          const kebabbyString = _.kebabCase(e.data.title);
+          editor.insertContent(kebabbyString);
         }
-      })
+      });
     }
-  })
-}
+  });
+};
 
-export default plugin
+export default plugin;
