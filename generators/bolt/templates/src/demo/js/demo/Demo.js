@@ -1,12 +1,17 @@
-define('tinymce.<%= camelName %>.demo.Demo', [
-	'global!tinymce',
-	'tinymce.<%= camelName %>.plugin.Plugin'
-], function (tinymce, Plugin) { // eslint-disable-line no-unused-vars
-	return function () {
-		tinymce.init({
-			selector: 'textarea.editor',
-			plugins: '<%= camelName %>',
-			toolbar: '<%= camelName %>'
-		});
-	};
+define(
+'tinymce.plugins.<%= camelName %>.demo.Demo',
+  [
+    'ephox/tinymce',
+    'tinymce.plugins.<%= camelName %>.Plugin'
+  ],
+function (tinymce, <%= pascalName %>Plugin) {
+  <%= pascalName %>Plugin();
+
+  return function () {
+    tinymce.init({
+      selector: 'textarea.editor',
+      plugins: '<%= camelName %>',
+      toolbar: '<%= camelName %>'
+    });
+  };
 });

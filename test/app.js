@@ -89,6 +89,7 @@ describe('generator-tiny-plugin:app bolt', function () {
       'config/bolt/browser.js',
       'config/bolt/demo.js',
       'config/bolt/prod.js',
+      'config/bolt/test.js',
       'src/demo/html/demo.html',
       'src/demo/js/demo/Demo.js',
       'src/main/js/core/Adder.js',

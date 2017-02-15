@@ -1,4 +1,4 @@
-import kebabCase from 'lodash.kebabcase'
+import _ from 'lodash'
 
 const plugin = (editor, url) => {
   editor.addButton('<%= camelName %>', {
@@ -13,7 +13,7 @@ const plugin = (editor, url) => {
         ],
         onsubmit (e) {
           // Insert content when the window form is submitted
-          const kebabbyString = kebabCase(e.data.title)
+          const kebabbyString = _.kebabCase(e.data.title)
           editor.insertContent(kebabbyString)
         }
       })

@@ -1,9 +1,9 @@
 /* eslint-env node */
 
 module.exports = function (grunt) {
-  var packageData = grunt.file.readJSON('package.json')
-  var BUILD_VERSION = packageData.version + '-' + (process.env.BUILD_NUMBER ? process.env.BUILD_NUMBER : '0')
-  var pluginName = '<%= name %>'
+  var packageData = grunt.file.readJSON('package.json');
+  var BUILD_VERSION = packageData.version + '-' + (process.env.BUILD_NUMBER ? process.env.BUILD_NUMBER : '0');
+  var pluginName = '<%= name %>';
 
   grunt.initConfig({
     pkg: packageData,
@@ -33,8 +33,8 @@ module.exports = function (grunt) {
       license: {
         options: {
           process: function (src) {
-            var buildSuffix = process.env.BUILD_NUMBER ? '-' + process.env.BUILD_NUMBER : ''
-            return src.replace(/@BUILD_NUMBER@/g, packageData.version + buildSuffix)
+            var buildSuffix = process.env.BUILD_NUMBER ? '-' + process.env.BUILD_NUMBER : '';
+            return src.replace(/@BUILD_NUMBER@/g, packageData.version + buildSuffix);
           }
         },
         files: {
@@ -48,14 +48,14 @@ module.exports = function (grunt) {
     'bolt-build': {
       'main': {
         config_js: 'config/bolt/prod.js',
-        main: 'tinymce.pillow.plugin.Plugin',
+        main: 'tinymce.plugins.<%= camelName %>.Plugin',
         output_dir: 'scratch',
         filename: 'plugin',
         generate_inline: true,
         minimise_module_names: true,
 
         files: {
-          src: ['src/main/js/tinymce/pillow/plugin/Plugin.js']
+          src: ['src/main/js/<%= camelName %>/Plugin.js']
         }
       }
     },
@@ -92,36 +92,21 @@ module.exports = function (grunt) {
     copy: {
       css: {
         files: [
-          {cwd: 'src/text', src: ['license.txt'], dest: 'dist/' + pluginName, expand: true},
-          {src: ['changelog.txt'], dest: 'dist/' + pluginName, expand: true}
+          { cwd: 'src/text', src: ['license.txt'], dest: 'dist/' + pluginName, expand: true },
+          { src: ['changelog.txt'], dest: 'dist/' + pluginName, expand: true }
         ]
       }
     }
-  })
-
-  grunt.task.registerTask('tunic', 'Serves browser tests using tunic', function () {
-    var done = this.async()
-    var tests = grunt.file.expand('src/test/js/**/*.js')
-
-    grunt.util.spawn({
-      cmd: 'tunic',
-      args: [
-        'config/bolt/browser.js'
-      ].concat(tests),
-      opts: {stdio: 'inherit'}
-    }, function () {
-      done()
-    })
-  })
+  });
 
   require('load-grunt-tasks')(grunt)
   grunt.loadNpmTasks('@ephox/bolt')
 
   grunt.registerTask('version', 'Creates a version file', function () {
-    grunt.file.write('dist/' + pluginName + '/version.txt', BUILD_VERSION)
-  })
+    grunt.file.write('dist/' + pluginName + '/version.txt', BUILD_VERSION);
+  });
 
-  grunt.registerTask('lint', ['eslint'])
-  grunt.registerTask('minify', ['bolt-build', 'uglify', 'less', 'concat:license', 'copy', 'version'])
-  grunt.registerTask('default', ['lint', 'bolt-init', 'minify'])
+  grunt.registerTask('lint', ['eslint']);
+  grunt.registerTask('minify', ['bolt-build', 'uglify', 'less', 'concat:license', 'copy', 'version']);
+  grunt.registerTask('default', ['lint', 'bolt-init', 'minify']);
 }

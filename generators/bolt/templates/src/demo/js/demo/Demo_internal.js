@@ -1,8 +1,11 @@
-define('tinymce.plugins.<%= camelName %>.demo.Demo', [
-  'tinymce.core.EditorManager',
-  'tinymce.themes.modern.Theme',
-  'tinymce.plugins.<%= camelName %>.Plugin'
-], function (EditorManager, ModernTheme, <%= pascalName %>Plugin) { // eslint-disable-line no-unused-vars
+define(
+  'tinymce.plugins.<%= camelName %>.demo.Demo',
+  [
+    'tinymce.core.EditorManager',
+    'tinymce.themes.modern.Theme',
+    'tinymce.plugins.<%= camelName %>.Plugin'
+  ],
+  function (EditorManager, ModernTheme, <%= pascalName %>Plugin) { // eslint-disable-line no-unused-vars
   return function () {
     ModernTheme();
     <%= pascalName %>Plugin();
