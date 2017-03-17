@@ -47,13 +47,14 @@ module.exports = class PluginGenerator extends Generator {
       },
       {
         name: 'language',
-        message: 'What\'s your jam?',
+        message: 'How do you want to write your plugin?',
         type: 'list',
         choices: [
           { name: 'ES2015', value: 'es2015' },
           { name: 'TypeScript', value: 'ts' },
           { name: 'bolt', value: 'bolt' }
-        ]
+        ],
+        when: !this.options.internal
       },
       {
         name: 'yarn',
@@ -78,12 +79,14 @@ module.exports = class PluginGenerator extends Generator {
 
   default () {
     utils.handleDir(this)
-    const { name, language } = this.props
-    const licenseOutput = language === 'bolt' ? 'src/text/license.txt' : 'src/LICENSE'
+    let { name, language } = this.props
+    const { internal } = this.options
+    language = internal ? 'bolt' : language
 
     this.composeWith(require.resolve('../' + language), { name, internal: this.options.internal })
 
     if (!this.options.internal) {
+      const licenseOutput = language === 'bolt' ? 'src/text/license.txt' : 'src/LICENSE'
       this.composeWith(
         require.resolve('generator-license/app'),
         { output: licenseOutput, defaultLicense: 'MIT' }
