@@ -1,22 +1,22 @@
-# generator-tiny-plugin [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] 
+# generator-tinymce [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] 
 > Bootstrap your TinyMCE plugin!
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-tiny-plugin using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-tinymce using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-tiny-plugin
+npm install -g generator-tinymce
 ```
 
 Then generate your new project:
 
 ```bash
-yo tiny-plugin
+yo tinymce
 ```
 
-[npm-image]: https://badge.fury.io/js/generator-tiny-plugin.svg
-[npm-url]: https://npmjs.org/package/generator-tiny-plugin
-[travis-image]: https://travis-ci.org//generator-tiny-plugin.svg?branch=master
-[travis-url]: https://travis-ci.org//generator-tiny-plugin
+[npm-image]: https://badge.fury.io/js/generator-tinymce.svg
+[npm-url]: https://npmjs.org/package/generator-tinymce
+[travis-image]: https://travis-ci.org//generator-tinymce.svg?branch=master
+[travis-url]: https://travis-ci.org//generator-tinymce

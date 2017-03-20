@@ -3,7 +3,7 @@ var path = require('path')
 var assert = require('yeoman-assert')
 var helpers = require('yeoman-test')
 
-describe('generator-tiny-plugin:app ts', function () {
+describe('generator-tinymce:app ts', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
@@ -38,7 +38,7 @@ describe('generator-tiny-plugin:app ts', function () {
   })
 })
 
-describe('generator-tiny-plugin:app es2015', function () {
+describe('generator-tinymce:app es2015', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
@@ -72,7 +72,7 @@ describe('generator-tiny-plugin:app es2015', function () {
   })
 })
 
-describe('generator-tiny-plugin:app bolt', function () {
+describe('generator-tinymce:app bolt', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
@@ -117,7 +117,7 @@ describe('generator-tiny-plugin:app bolt', function () {
   })
 })
 
-describe('generator-tiny-plugin:app bolt with --internal flag', function () {
+describe('generator-tinymce:app bolt with --internal flag', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({
@@ -169,7 +169,7 @@ describe('generator-tiny-plugin:app bolt with --internal flag', function () {
   })
 })
 
-describe('generator-tiny-plugin:app do not skip git', function () {
+describe('generator-tinymce:app do not skip git', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
@@ -185,7 +185,7 @@ describe('generator-tiny-plugin:app do not skip git', function () {
   })
 })
 
-describe('generator-tiny-plugin:app skip git', function () {
+describe('generator-tinymce:app skip git', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipGit: true })

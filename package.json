@@ -1,5 +1,5 @@
 {
-  "name": "generator-tiny-plugin",
+  "name": "generator-tinymce",
   "version": "0.0.1",
   "description": "Bootstrap your TinyMCE plugin",
   "author": "Ephox Corporation",
@@ -38,7 +38,7 @@
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.6.0"
   },
-  "repository": "/generator-tiny-plugin",
+  "repository": "/generator-tinymce",
   "scripts": {
     "prepublishOnly": "gulp prepublish",
     "test": "gulp"
