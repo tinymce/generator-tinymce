@@ -39,7 +39,7 @@ module.exports = class PluginGenerator extends Generator {
 
     var prompts = [
       {
-        name: 'name',
+        name: 'pluginName',
         message: 'Plugin name:',
         default: path.basename(process.cwd()),
         filter: str => _.kebabCase(str),
@@ -78,12 +78,14 @@ module.exports = class PluginGenerator extends Generator {
   }
 
   default () {
-    utils.handleDir(this)
-    let { name, language } = this.props
+    let { pluginName, language } = this.props
+
+    utils.handleDir(this, pluginName)
+
     const { internal } = this.options
     language = internal ? 'bolt' : language
 
-    this.composeWith(require.resolve('../' + language), { name, internal: this.options.internal })
+    this.composeWith(require.resolve('../' + language), { name: pluginName, internal: this.options.internal })
 
     if (!this.options.internal) {
       const licenseOutput = language === 'bolt' ? 'src/text/license.txt' : 'src/LICENSE'
@@ -102,7 +104,7 @@ module.exports = class PluginGenerator extends Generator {
     if (!skipGit && !this.options.internal) {
       utils.gitInit(
         this,
-        `Initial commit on ${this.props.name} TinyMCE plugin.`
+        `Initial commit on ${this.props.pluginName} TinyMCE plugin.`
       )
     }
 

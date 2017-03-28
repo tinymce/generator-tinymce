@@ -3,8 +3,7 @@ const mkdirp = require('mkdirp')
 const chalk = require('chalk')
 // const R = require('ramda')
 
-const handleDir = ctx => {
-  const {name} = ctx.props
+const handleDir = (ctx, name) => {
   if (path.basename(ctx.destinationPath()) !== name) {
     ctx.log(
       '\n' +
@@ -12,8 +11,8 @@ const handleDir = ctx => {
       chalk.green('!') + ' with the same name as the plugin: ' + chalk.blue(name) + '\n' +
       chalk.green('!') + ' I\'ll automatically create this directory for you.\n'
     )
-    mkdirp(ctx.props.name)
-    ctx.destinationRoot(ctx.destinationPath(ctx.props.name))
+    mkdirp(name)
+    ctx.destinationRoot(ctx.destinationPath(name))
   }
 }
 

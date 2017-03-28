@@ -7,9 +7,12 @@ describe('generator-tinymce:app ts', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
-        name: 'cool-plugin',
+        pluginName: 'cool-plugin',
         language: 'ts',
-        license: 'MIT'
+        license: 'MIT',
+        name: 'Tester McTest',
+        email: 'mail@mctest.com',
+        website: 'www.mctest.com'
       })
       .toPromise()
   })
@@ -35,6 +38,7 @@ describe('generator-tinymce:app ts', function () {
     assert.fileContent('package.json', '"name": "cool-plugin"')
     assert.fileContent('config/webpack.config.prod.js', 'const pluginName = "cool-plugin"')
     assert.fileContent('README.md', '# coolPlugin')
+    assert.fileContent('src/LICENSE', 'Tester McTest <mail@mctest.com> (www.mctest.com)')
   })
 })
 
@@ -42,9 +46,12 @@ describe('generator-tinymce:app es2015', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
-        name: 'cool-plugin',
+        pluginName: 'cool-plugin',
         language: 'es2015',
-        license: 'MIT'
+        license: 'MIT',
+        name: 'Tester McTest',
+        email: 'mail@mctest.com',
+        website: 'www.mctest.com'
       })
       .toPromise()
   })
@@ -76,9 +83,12 @@ describe('generator-tinymce:app bolt', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
-        name: 'cool-plugin',
+        pluginName: 'cool-plugin',
         language: 'bolt',
-        license: 'MIT'
+        license: 'MIT',
+        name: 'Tester McTest',
+        email: 'mail@mctest.com',
+        website: 'www.mctest.com'
       })
       .toPromise()
   })
@@ -124,9 +134,12 @@ describe('generator-tinymce:app bolt with --internal flag', function () {
         internal: true
       })
       .withPrompts({
-        name: 'cool-plugin',
+        pluginName: 'cool-plugin',
         language: 'bolt',
-        license: 'MIT'
+        license: 'MIT',
+        name: 'Tester McTest',
+        email: 'mail@mctest.com',
+        website: 'www.mctest.com'
       })
       .toPromise()
   })
@@ -173,9 +186,12 @@ describe('generator-tinymce:app do not skip git', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
-        name: 'cool-plugin',
+        pluginName: 'cool-plugin',
         language: 'es2015',
-        license: 'MIT'
+        license: 'MIT',
+        name: 'Tester McTest',
+        email: 'mail@mctest.com',
+        website: 'www.mctest.com'
       })
       .toPromise()
   })
@@ -190,9 +206,12 @@ describe('generator-tinymce:app skip git', function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipGit: true })
       .withPrompts({
-        name: 'cool-plugin',
+        pluginName: 'cool-plugin',
         language: 'es2015',
-        license: 'MIT'
+        license: 'MIT',
+        name: 'Tester McTest',
+        email: 'mail@mctest.com',
+        website: 'www.mctest.com'
       })
       .toPromise()
   })
