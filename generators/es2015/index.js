@@ -15,7 +15,7 @@ module.exports = class ES2015 extends Generator {
   }
 
   initializing () {
-    const {name} = this.options
+    const name = this.options.name
     const camelName = _.camelCase(name)
 
     const ch = utils.copyHelper(this)

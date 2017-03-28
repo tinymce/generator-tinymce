@@ -21,7 +21,8 @@ module.exports = class Bolt extends Generator {
   }
 
   default () {
-    const {name, internal} = this.options
+    const name = this.options.name
+    const internal = this.options.internal
     const camelName = _.camelCase(name)
     const pascalName = name.split('-').map(_.startCase).join('')
     const ch = utils.copyHelper(this)

@@ -4,6 +4,7 @@ node_js:
   - v7
   - v6
   - v5
+  - v4
   - node
 before_install:
   - git config --global user.email "mail@test.com"

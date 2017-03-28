@@ -17,7 +17,8 @@ const handleDir = (ctx, name) => {
 }
 
 const copyHelper = ctx =>
-  (from, dest, opts = {}) => {
+  (from, dest, opts) => {
+    opts = opts === undefined ? {} : opts
     ctx.fs.copyTpl(
           ctx.templatePath(from),
           ctx.destinationPath(dest),
@@ -25,7 +26,9 @@ const copyHelper = ctx =>
         )
   }
 
-const gitInit = (ctx, message = 'Initial commit.') => {
+const gitInit = (ctx, message) => {
+  message = message !== undefined ? message : 'Initial commit.'
+
   ctx.spawnCommandSync('git', ['init', '--quiet'])
   ctx.spawnCommandSync('git', ['add', '--all'])
   ctx.spawnCommandSync('git', ['commit', '-m', message, '--quiet'])

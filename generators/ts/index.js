@@ -15,7 +15,7 @@ module.exports = class TypeScript extends Generator {
   }
 
   initializing () {
-    const {name} = this.options
+    const name = this.options.name
     const camelName = _.camelCase(name)
 
     const ch = utils.copyHelper(this)

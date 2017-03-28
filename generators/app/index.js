@@ -78,11 +78,12 @@ module.exports = class PluginGenerator extends Generator {
   }
 
   default () {
-    let { pluginName, language } = this.props
+    const pluginName = this.props.pluginName
+    let language = this.props.language
 
     utils.handleDir(this, pluginName)
 
-    const { internal } = this.options
+    const internal = this.options.internal
     language = internal ? 'bolt' : language
 
     this.composeWith(require.resolve('../' + language), { name: pluginName, internal: this.options.internal })
@@ -99,7 +100,7 @@ module.exports = class PluginGenerator extends Generator {
   install () {
     const useYarn = this.options.yarn || this.props.yarn
     const skipGit = this.options.skipGit || this.props.skipGit
-    const {internal} = this.options
+    const internal = this.options.internal
 
     if (!skipGit && !this.options.internal) {
       utils.gitInit(
