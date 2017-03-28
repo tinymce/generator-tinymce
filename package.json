@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "Bootstrap your TinyMCE plugin",
   "author": "Ephox Corporation",
+  "homepage": "https://github.com/tinymce/generator-tinymce",
   "files": [
     "generators",
     "utils"
@@ -38,7 +39,7 @@
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.6.0"
   },
-  "repository": "/generator-tinymce",
+  "repository": "tinymce/generator-tinymce",
   "scripts": {
     "prepublishOnly": "gulp prepublish",
     "test": "gulp"
