@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "typings install",
-    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --open",
+    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --open --inline",
     "lint": "tslint 'src/**/*.js'",
     "build": "webpack --config config/webpack.config.prod.js --progress"
   },
