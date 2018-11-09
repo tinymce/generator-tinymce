@@ -1,24 +1,20 @@
-const Generator = require('yeoman-generator')
-const _ = require('lodash')
-const utils = require('../../utils')
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Generator = require("yeoman-generator");
+const lodash_1 = require("lodash");
+const utils = require("../utils");
 module.exports = class TypeScript extends Generator {
-  constructor (args, opts) {
-    super(args, opts)
-
-    this.option('name', {
-      type: String,
-      required: true,
-      desc: 'Name of the plugin'
-    })
-  }
-
-  initializing () {
-    const name = this.options.name
-    const camelName = _.camelCase(name)
-
-    const ch = utils.copyHelper(this)
-
-    ch('README.md', 'README.md', { name, camelName })
-  }
-}
+    constructor(args, opts) {
+        super(args, opts);
+        this.option('name', {
+            type: String,
+            description: 'Name of the plugin'
+        });
+    }
+    initializing() {
+        const name = this.options.name;
+        const camelName = lodash_1.camelCase(name);
+        const ch = utils.copyHelper(this);
+        ch('README.md', 'README.md', { name, camelName });
+    }
+};

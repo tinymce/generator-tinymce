@@ -75,7 +75,7 @@ describe('generator-tinymce:package', function () {
   it('has correct name in package.json', function () {
     // assert.fileContent('package.json', '"name": "cool-plugin"')
     // assert.fileContent('config/webpack.config.prod.js', 'const pluginName = "cool-plugin"')
-    assert.fileContent('README.md', 'coolPlugin package')
+    assert.fileContent('README.md', 'coolPackage package')
     // assert.fileContent('src/LICENSE', 'Tester McTest <mail@mctest.com> (www.mctest.com)')
   })
 })
