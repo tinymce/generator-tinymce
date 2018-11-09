@@ -20,10 +20,10 @@ const copyHelper = ctx =>
   (from, dest, opts) => {
     opts = opts === undefined ? {} : opts
     ctx.fs.copyTpl(
-          ctx.templatePath(from),
-          ctx.destinationPath(dest),
-          opts
-        )
+      ctx.templatePath(from),
+      ctx.destinationPath(dest),
+      opts
+    )
   }
 
 const gitInit = (ctx, message) => {
@@ -36,7 +36,7 @@ const gitInit = (ctx, message) => {
     '\n' +
     chalk.green('success') + ' Created git repository!' +
     '\n'
-    )
+  )
 }
 
 module.exports = {

@@ -1,4 +1,3 @@
-'use strict'
 const Generator = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
@@ -16,59 +15,36 @@ module.exports = class PluginGenerator extends Generator {
       required: false,
       default: false
     })
-
-    this.option('yarn', {
-      type: Boolean,
-      desc: 'Use yarn instead of npm',
-      required: false,
-      default: false
-    })
-
-    this.option('internal', {
-      type: Boolean,
-      desc: 'Are you creating a core plugin?',
-      required: false,
-      default: false
-    })
   }
 
   prompting () {
     this.log(
-      yosay('Welcome to the\n' + chalk.red('TinyMCE plugin') + '\ngenerator!')
+      yosay('Welcome to the\n' + chalk.red('TinyMCE package') + '\ngenerator!')
     )
 
     var prompts = [
       {
-        name: 'pluginName',
-        message: 'Plugin name:',
+        name: 'packageName',
+        message: 'Package name:',
         default: path.basename(process.cwd()),
         filter: str => _.kebabCase(str),
         validate: str => str.length > 0
       },
       {
-        name: 'language',
-        message: 'How do you want to write your plugin?',
+        name: 'type',
+        message: 'Are you creating a package or a plugin',
         type: 'list',
         choices: [
-          { name: 'ES2015', value: 'es2015' },
-          { name: 'TypeScript', value: 'ts' },
-          { name: 'bolt', value: 'bolt' }
-        ],
-        when: !this.options.internal
-      },
-      {
-        name: 'yarn',
-        type: 'confirm',
-        message: 'Use yarn instead of npm?',
-        default: false,
-        when: !this.options.yarn && !this.options.internal
+          { name: 'Package', value: 'package' },
+          { name: 'Plugin', value: 'plugin' }
+        ]
       },
       {
         name: 'skipGit',
         type: 'confirm',
         message: 'Skip git repo initialization?',
         default: false,
-        when: !this.options.skipGit && !this.options.internal
+        when: !this.options.skipGit
       }
     ]
 
@@ -78,43 +54,36 @@ module.exports = class PluginGenerator extends Generator {
   }
 
   default () {
-    const pluginName = this.props.pluginName
-    let language = this.props.language
+    const packageName = this.props.packageName
+    utils.handleDir(this, packageName)
 
-    utils.handleDir(this, pluginName)
+    this.composeWith(require.resolve('../' + this.props.type), { name: packageName, internal: this.options.internal })
 
-    const internal = this.options.internal
-    language = internal ? 'bolt' : language
-
-    this.composeWith(require.resolve('../' + language), { name: pluginName, internal: this.options.internal })
-
-    if (!this.options.internal) {
-      const licenseOutput = language === 'bolt' ? 'src/text/license.txt' : 'src/LICENSE'
-      this.composeWith(
-        require.resolve('generator-license/app'),
-        { output: licenseOutput, defaultLicense: 'MIT' }
-      )
-    }
+    this.composeWith(
+      require.resolve('generator-license/app'),
+      {
+        name: 'Tiny Technologies Inc',
+        email: 'is-accounts@ephox.com',
+        website: 'https://tiny.cloud/',
+        license: 'Apache-2.0'
+      }
+    )
   }
 
   install () {
-    const useYarn = this.options.yarn || this.props.yarn
     const skipGit = this.options.skipGit || this.props.skipGit
-    const internal = this.options.internal
 
-    if (!skipGit && !this.options.internal) {
+    if (!skipGit) {
       utils.gitInit(
         this,
-        `Initial commit on ${this.props.pluginName} TinyMCE plugin.`
+        `Initial commit on ${this.props.packageName} TinyMCE plugin.`
       )
     }
 
-    if (!internal) {
-      this.installDependencies({
-        bower: false,
-        yarn: useYarn,
-        npm: !useYarn
-      })
-    }
+    this.installDependencies({
+      bower: false,
+      yarn: false,
+      npm: true
+    })
   }
 }
