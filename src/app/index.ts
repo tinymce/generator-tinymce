@@ -28,15 +28,15 @@ module.exports = class PluginGenerator extends Generator {
         filter: (str) => kebabCase(str),
         validate: (str) => str.length > 0
       },
-      {
-        name: 'type',
-        message: 'Are you creating a package or a plugin',
-        type: 'list',
-        choices: [
-          { name: 'Package', value: 'package' },
-          { name: 'Plugin', value: 'plugin' }
-        ]
-      },
+      // {
+      //   name: 'type',
+      //   message: 'Are you creating a package or a plugin',
+      //   type: 'list',
+      //   choices: [
+      //     { name: 'Package', value: 'package' },
+      //     { name: 'Plugin', value: 'plugin' }
+      //   ]
+      // },
       {
         name: 'description',
         message: 'Add a description',
@@ -53,9 +53,10 @@ module.exports = class PluginGenerator extends Generator {
   public default () {
     const packageName = this.props.packageName;
     const description = this.props.description;
+    const type = 'plugin'; // this.props.type
     utils.handleDir(this, packageName);
 
-    this.composeWith(require.resolve('../' + this.props.type), { name: packageName, description });
+    this.composeWith(require.resolve('../' + type), { name: packageName, description });
 
     this.composeWith(
       require.resolve('generator-license/app'),
