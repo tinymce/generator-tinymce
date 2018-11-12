@@ -19,6 +19,7 @@ describe('generator-tinymce:plugin', () => {
       'tslint.json',
       'tsconfig.json',
       'README.md',
+      '.editorconfig',
       '.gitignore',
       'LICENSE.txt',
       'Gruntfile.js',

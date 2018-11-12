@@ -28,6 +28,7 @@ module.exports = class TypeScript extends Generator {
     copy('tsconfig.json', 'tsconfig.json');
     copy('tslint.json', 'tslint.json');
     copy('gitignore', '.gitignore');
+    copy('editorconfig', '.editorconfig');
     copy('package.json', 'package.json', { name, description });
     copy('README.md', 'README.md', { name, camelName });
     copy('Gruntfile.js', 'Gruntfile.js', { name });
