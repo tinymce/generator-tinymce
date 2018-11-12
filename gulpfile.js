@@ -1,11 +1,11 @@
 // @ts-check
 const path = require('path')
 const gulp = require('gulp')
-const excludeGitignore = require('gulp-exclude-gitignore')
 const mocha = require('gulp-mocha')
-const nsp = require('gulp-nsp')
 const plumber = require('gulp-plumber')
 const ts = require('gulp-typescript')
+const tslint = require('gulp-tslint').default;
+const del = require('del');
 
 const tsProject = ts.createProject('tsconfig.json')
 
@@ -17,22 +17,16 @@ gulp.task('templates', () => {
   return gulp.src(['src/package/templates/**/*', 'src/plugin/templates/**/*'], { base: 'src' }).pipe(gulp.dest('generators'))
 })
 
-gulp.task('static', function () {
-  return gulp.src(['**/*.js', '!generators/**/templates/**/*.js'])
-    .pipe(excludeGitignore())
+gulp.task('tslint', function () {
+  return gulp.src(['src/**/*.ts', '!generators/**/templates/**/*.ts'])
+    .pipe(tslint({ formatter: 'prose' }))
+    .pipe(tslint.report())
     // .pipe(eslint({ baseConfig: eslintConfig }))
     // .pipe(eslint.format())
     // .pipe(eslint.failAfterError())
 })
 
-gulp.task('nsp', function (cb) {
-  nsp({ package: path.resolve('package.json') }, cb)
-})
-
-gulp.task('pre-test', function () {
-  return gulp.src(['generators/**/*.js', '!generators/**/templates/**/*.js'])
-    .pipe(excludeGitignore())
-})
+gulp.task('cleanup', () => del(['generators']))
 
 gulp.task('test', function (cb) {
   var mochaErr
@@ -52,5 +46,4 @@ gulp.task('watch', function () {
   gulp.watch(['src/**/*.ts', 'src/**/templates/**/*', 'test/**'], gulp.series('ts', 'templates', 'test'))
 })
 
-gulp.task('prepublish', gulp.series('nsp'))
-gulp.task('default', gulp.series('ts', 'templates', 'static', 'test'))
+gulp.task('default', gulp.series('cleanup', 'tslint', 'ts', 'templates', 'test'))
