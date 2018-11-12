@@ -6,22 +6,13 @@ import { kebabCase } from 'lodash';
 import * as utils from '../utils';
 
 module.exports = class PluginGenerator extends Generator {
-  public options: {
-    skipGit: boolean;
-  };
   public props: {
     packageName: string;
     type: 'plugins' | 'package';
-    skipGit: boolean;
+    description: string;
   };
   constructor (args, opts) {
     super(args, opts);
-
-    this.option('skip-git', {
-      type: Boolean,
-      description: 'Skip git repo init',
-      default: false
-    });
   }
 
   public prompting () {
@@ -47,11 +38,10 @@ module.exports = class PluginGenerator extends Generator {
         ]
       },
       {
-        name: 'skipGit',
-        type: 'confirm',
-        message: 'Skip git repo initialization?',
-        default: false,
-        when: !this.options.skipGit
+        name: 'description',
+        message: 'Add a description',
+        type: 'string',
+        default: ''
       }
     ];
 
@@ -62,9 +52,10 @@ module.exports = class PluginGenerator extends Generator {
 
   public default () {
     const packageName = this.props.packageName;
+    const description = this.props.description;
     utils.handleDir(this, packageName);
 
-    this.composeWith(require.resolve('../' + this.props.type), { name: packageName });
+    this.composeWith(require.resolve('../' + this.props.type), { name: packageName, description });
 
     this.composeWith(
       require.resolve('generator-license/app'),
@@ -72,20 +63,14 @@ module.exports = class PluginGenerator extends Generator {
         name: 'Tiny Technologies Inc',
         email: 'is-accounts@ephox.com',
         website: 'https://tiny.cloud/',
-        license: 'Apache-2.0'
+        license: 'Apache-2.0',
+        output: 'LICENSE.txt'
       }
     );
   }
 
   public install () {
-    const skipGit = this.options.skipGit || this.props.skipGit;
-
-    if (!skipGit) {
-      utils.gitInit(
-        this,
-        `Initial commit on ${this.props.packageName} TinyMCE plugin.`
-      );
-    }
+    utils.gitInit(this, `Initial commit on ${this.props.packageName} TinyMCE plugin.`);
 
     this.installDependencies({
       bower: false,

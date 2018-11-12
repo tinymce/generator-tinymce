@@ -8,7 +8,7 @@ import * as del from 'del';
 const tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('ts', () => {
-  return gulp.src('src/**/*.ts').pipe(tsProject()).js.pipe(gulp.dest('generators'));
+  return gulp.src(['src/**/*.ts', '!src/**/templates/**/*.ts']).pipe(tsProject()).js.pipe(gulp.dest('generators'));
 });
 
 gulp.task('templates', () => {
@@ -26,9 +26,9 @@ gulp.task('cleanup', () => del(['generators']));
 gulp.task('test', function (cb) {
   let mochaErr;
 
-  return gulp.src('test/**/*.js')
+  return gulp.src('test/**/*.ts')
     .pipe(plumber())
-    .pipe(mocha({ reporter: 'spec' }))
+    .pipe(mocha({ reporter: 'spec', require: [ 'ts-node/register' ] }))
     .on('error', function (err) {
       mochaErr = err;
     })
@@ -38,7 +38,7 @@ gulp.task('test', function (cb) {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*.ts', 'src/**/templates/**/*', 'test/**'], gulp.series('ts', 'templates', 'test'));
+  gulp.watch(['src/**/*.ts', 'src/**/templates/**/*', 'test/**'], gulp.series('test'));
 });
 
 gulp.task('default', gulp.series('cleanup', 'tslint', 'ts', 'templates', 'test'));

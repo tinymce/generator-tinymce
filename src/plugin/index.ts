@@ -3,7 +3,7 @@ import { camelCase } from 'lodash';
 import * as utils from '../utils';
 
 module.exports = class TypeScript extends Generator {
-  public options: { name: string };
+  public options: { name: string, description: string };
   constructor (args, opts) {
     super(args, opts);
 
@@ -11,14 +11,32 @@ module.exports = class TypeScript extends Generator {
       type: String,
       description: 'Name of the plugin'
     });
+    this.option('description', {
+      type: String,
+      description: 'Add a description for the plugin',
+      default: ''
+    });
   }
 
   public initializing () {
     const name = this.options.name;
+    const description = this.options.description;
     const camelName = camelCase(name);
 
-    const ch = utils.copyHelper(this);
+    const copy = utils.copyHelper(this);
 
-    ch('README.md', 'README.md', { name, camelName });
+    copy('tsconfig.json', 'tsconfig.json');
+    copy('tslint.json', 'tslint.json');
+    copy('gitignore', '.gitignore');
+    copy('package.json', 'package.json', { name, description });
+    copy('README.md', 'README.md', { name, camelName });
+    copy('Gruntfile.js', 'Gruntfile.js', { name });
+    copy('changelog.txt', 'changelog.txt');
+    copy('src/demo/html/index.html', 'src/demo/html/index.html', { name });
+    copy('src/demo/ts/Demo.ts', 'src/demo/ts/Demo.ts', { name });
+    copy('src/main/ts/Plugin.ts', 'src/main/ts/Plugin.ts', { name });
+    copy('src/main/ts/core/AddTwo.ts', 'src/main/ts/core/AddTwo.ts');
+    copy('src/test/ts/browser/PluginTest.ts', 'src/test/ts/browser/PluginTest.ts', { name });
+    copy('src/test/ts/atomic/AddTwoTest.ts', 'src/test/ts/atomic/AddTwoTest.ts');
   }
 };

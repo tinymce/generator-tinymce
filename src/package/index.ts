@@ -20,5 +20,6 @@ module.exports = class Package extends Generator {
     const ch = utils.copyHelper(this);
 
     ch('README.md', 'README.md', { name, camelName });
+    ch('tslint.json', 'tslint.json');
   }
 };
