@@ -1,6 +1,6 @@
 {
   "name": "generator-tinymce",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Bootstrap your TinyMCE plugin",
   "author": "Ephox Corporation",
   "homepage": "https://github.com/tinymce/generator-tinymce",
