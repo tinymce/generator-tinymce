@@ -8,6 +8,9 @@
     "generators",
     "utils"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "lib/index.js",
   "keywords": [
     "tinymce",
