@@ -47,6 +47,7 @@
   "repository": "tinymce/generator-tinymce",
   "scripts": {
     "build": "gulp",
+    "prepublishOnly": "npm run build",
     "test": "gulp test",
     "watch": "gulp watch"
   },
