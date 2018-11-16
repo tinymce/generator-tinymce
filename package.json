@@ -5,7 +5,7 @@
   "author": "Ephox Corporation",
   "homepage": "https://github.com/tinymce/generator-tinymce",
   "files": [
-    "generators",
+    "generators/**/*",
     "utils"
   ],
   "publishConfig": {
@@ -46,6 +46,7 @@
   "repository": "tinymce/generator-tinymce",
   "scripts": {
     "build": "gulp",
+    "prepublishOnly": "npm run build",
     "test": "gulp test",
     "watch": "gulp watch"
   },
