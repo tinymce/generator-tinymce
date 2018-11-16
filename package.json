@@ -6,13 +6,11 @@
   "homepage": "https://github.com/tinymce/generator-tinymce",
   "files": [
     "generators",
-    "templates",
     "utils"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "generators/app/index.js",
   "keywords": [
     "tinymce",
     "plugin",
