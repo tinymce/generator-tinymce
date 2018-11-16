@@ -16,11 +16,11 @@ node("primary") {
   def runBuild = load("jenkins-plumbing/standard-build.groovy")
   runBuild()
 
-  stage ("Sync to GitHub") {
-    sshagent (credentials: ['ea06cafd-e37d-4b47-b0c9-a32f47c00477']) {
-      sh "git remote add upstream git@github.com:tinymce/generator-tinymce.git"
-      sh "git checkout master"
-      sh "git push upstream master --tags"
-    }
-  }
+  // stage ("Sync to GitHub") {
+  //   sshagent (credentials: ['ea06cafd-e37d-4b47-b0c9-a32f47c00477']) {
+  //     sh "git remote add upstream git@github.com:tinymce/generator-tinymce.git"
+  //     sh "git checkout master"
+  //     sh "git push upstream master --tags"
+  //   }
+  // }
 }
