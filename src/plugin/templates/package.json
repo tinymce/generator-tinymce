@@ -30,6 +30,7 @@
     "load-grunt-tasks": "^4.0.0",
     "tinymce": "latest",
     "ts-loader": "^5.3.0",
+    "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6",
     "webpack": "^4.25.1",
