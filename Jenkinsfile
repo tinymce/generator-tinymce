@@ -6,6 +6,24 @@ properties([
 ])
 
 @NonCPS
+def triggerWasGit() {
+  // echo currentBuild.rawBuild.getCause(hudson.triggers.SCMTrigger$SCMTriggerCause).toString()
+  // echo currentBuild.rawBuild.getCause(hudson.plugins.git.GitStatus$CommitHookCause).toString()
+  // echo currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause).toString()
+  // echo "build causes:"
+  // echo currentBuild.rawBuild.getCauses().toString()
+  if (
+    currentBuild.rawBuild.getCause(hudson.triggers.SCMTrigger$SCMTriggerCause) ||
+    currentBuild.rawBuild.getCause(hudson.plugins.git.GitStatus$CommitHookCause) ||
+    currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
+  ) {
+    return true
+  } else {
+    return false
+  }
+}
+
+@NonCPS
 def triggerWasUser() {
   // echo currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause).toString()
   if (currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)) {
