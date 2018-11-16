@@ -25,5 +25,6 @@ node("primary") {
         git push upstream master --tags
       '''
     }
+    cleanWs()
   }
 }
