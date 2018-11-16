@@ -29,7 +29,7 @@ module.exports = class TypeScript extends Generator {
     copy('tslint.json', 'tslint.json');
     copy('gitignore', '.gitignore');
     copy('editorconfig', '.editorconfig');
-    copy('package.json', 'package.json', { name, description });
+    copy('_package.json', 'package.json', { name, description });
     copy('README.md', 'README.md', { name, camelName });
     copy('Gruntfile.js', 'Gruntfile.js', { name });
     copy('changelog.txt', 'changelog.txt');

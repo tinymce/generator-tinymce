@@ -6,12 +6,13 @@
   "homepage": "https://github.com/tinymce/generator-tinymce",
   "files": [
     "generators",
+    "templates",
     "utils"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "lib/index.js",
+  "main": "generators/app/index.js",
   "keywords": [
     "tinymce",
     "plugin",
@@ -47,7 +48,6 @@
   "repository": "tinymce/generator-tinymce",
   "scripts": {
     "build": "gulp",
-    "prepublishOnly": "npm run build",
     "test": "gulp test",
     "watch": "gulp watch"
   },
