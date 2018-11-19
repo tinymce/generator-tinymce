@@ -37,6 +37,7 @@ module.exports = function(grunt) {
         format: 'iife',
         banner: '(function () {',
         footer: 'plugin();})();',
+        onwarn: swag.onwarn,
         plugins: [
           swag.nodeResolve({
             basedir: __dirname,
