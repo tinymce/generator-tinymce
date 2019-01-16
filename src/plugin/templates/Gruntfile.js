@@ -57,7 +57,7 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      mentions: {
+      plugin: {
         files: [
           {
             src: scratchPluginPath,
@@ -80,10 +80,11 @@ module.exports = function(grunt) {
             );
           }
         },
+        // scratchPluginMinPath is used twice on purpose, all outputs will be minified for premium plugins
         files: {
           'dist/<%= name %>/plugin.js': [
             'src/text/license-header.js',
-            scratchPluginPath
+            scratchPluginMinPath
           ],
           'dist/<%= name %>/plugin.min.js': [
             'src/text/license-header.js',

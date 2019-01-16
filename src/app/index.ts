@@ -11,8 +11,17 @@ module.exports = class PluginGenerator extends Generator {
     type: 'plugins' | 'package';
     description: string;
   };
+  public options: {
+    'same-directory': boolean
+  };
   constructor (args, opts) {
     super(args, opts);
+
+    this.option('same-directory', {
+      type: Boolean,
+      description: 'Create the plugin structure in the directory you are currently in.',
+      default: false
+    });
   }
 
   public prompting () {
@@ -54,7 +63,11 @@ module.exports = class PluginGenerator extends Generator {
     const packageName = this.props.packageName;
     const description = this.props.description;
     const type = 'plugin'; // this.props.type
-    utils.handleDir(this, packageName);
+    if (this.options['same-directory'] === true) {
+      this.log('Generating in current directory.');
+    } else {
+      utils.handleDir(this, packageName);
+    }
 
     this.composeWith(require.resolve('../' + type), { name: packageName, description });
 
