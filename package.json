@@ -31,7 +31,7 @@
     "@types/node": "^10.12.3",
     "@types/yeoman-generator": "^3.0.0",
     "del": "^3.0.0",
-    "gulp": "next",
+    "gulp": "4.0.0",
     "gulp-line-ending-corrector": "^1.0.3",
     "gulp-mocha": "^6.0.0",
     "gulp-plumber": "^1.0.0",
