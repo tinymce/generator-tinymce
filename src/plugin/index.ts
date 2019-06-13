@@ -35,6 +35,7 @@ module.exports = class TypeScript extends Generator {
     copy('changelog.txt', 'changelog.txt');
     copy('src/demo/html/index.html', 'src/demo/html/index.html', { name });
     copy('src/demo/ts/Demo.ts', 'src/demo/ts/Demo.ts', { name });
+    copy('src/main/ts/Main.ts', 'src/main/ts/Main.ts', { name });
     copy('src/main/ts/Plugin.ts', 'src/main/ts/Plugin.ts', { name });
     copy('src/main/ts/core/AddTwo.ts', 'src/main/ts/core/AddTwo.ts');
     copy('src/test/ts/browser/PluginTest.ts', 'src/test/ts/browser/PluginTest.ts', { name });

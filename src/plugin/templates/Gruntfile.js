@@ -6,7 +6,7 @@ const swag = require('@ephox/swag');
 module.exports = function(grunt) {
   var packageData = grunt.file.readJSON('package.json');
   var BUILD_VERSION = packageData.version + '-' + (process.env.BUILD_NUMBER ? process.env.BUILD_NUMBER : '0');
-  const libPluginPath = 'lib/main/ts/Plugin.js';
+  const libPluginPath = 'lib/main/ts/Main.js';
   const scratchPluginPath = 'scratch/compiled/plugin.js';
   const scratchPluginMinPath = 'scratch/compiled/plugin.min.js';
   const tsDemoSourceFile = path.resolve('src/demo/ts/Demo.ts');
@@ -33,10 +33,7 @@ module.exports = function(grunt) {
     rollup: {
       options: {
         treeshake: true,
-        name: 'plugin',
         format: 'iife',
-        banner: '(function () {',
-        footer: 'plugin();})();',
         onwarn: swag.onwarn,
         plugins: [
           swag.nodeResolve({
