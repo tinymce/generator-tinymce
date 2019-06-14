@@ -4,11 +4,11 @@ Welcome stranger! This is a repo containing the <%= camelName %> TinyMCE plugin.
 
 ## The development server
 
-By running the `npm start` command you start the development server and open a browser window with an instance of TinyMCE with your plugin added to it. This window will reload automatically whenever a change is detected in the `index.html` file in the `static` folder or in one of the TypeScript files in the `src` directory.
+By running the `yarn start` command you start the development server and open a browser window with an instance of TinyMCE with your plugin added to it. This window will reload automatically whenever a change is detected in the `index.html` file in the `static` folder or in one of the TypeScript files in the `src` directory.
 
 ## The production build
 
-By running the `npm run build` command Webpack will create a `dist` directory with a child directory with the name of your plugin (<%= name %>) containing three files:
+By running the `yarn run build` command Webpack will create a `dist` directory with a child directory with the name of your plugin (<%= name %>) containing three files:
 
 * `plugin.js` - the bundled plugin
 * `plugin.min.js` - the bundles, uglified and minified plugin
