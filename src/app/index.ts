@@ -49,7 +49,7 @@ module.exports = class PluginGenerator extends Generator {
       {
         name: 'description',
         message: 'Add a description',
-        type: 'string',
+        type: 'input' as 'input',
         default: ''
       }
     ];
@@ -88,8 +88,8 @@ module.exports = class PluginGenerator extends Generator {
 
     this.installDependencies({
       bower: false,
-      yarn: false,
-      npm: true
+      yarn: true,
+      npm: false
     });
   }
 };

@@ -11,7 +11,6 @@ const setup = (editor, url) => {
   });
 };
 
-tinymce.PluginManager.add('<%= name %>', setup);
-
-// tslint:disable-next-line:no-empty
-export default () => {};
+export default () => {
+  tinymce.PluginManager.add('<%= name %>', setup);
+};
