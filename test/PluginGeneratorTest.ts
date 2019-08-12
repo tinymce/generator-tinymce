@@ -48,6 +48,6 @@ describe('generator-tinymce:plugin', () => {
     assert.fileContent('src/demo/ts/Demo.ts', 'code cool-plugin');
     assert.fileContent('src/demo/ts/Demo.ts', 'toolbar: \'cool-plugin\'');
     assert.fileContent('src/main/ts/Plugin.ts', 'tinymce.PluginManager.add(\'cool-plugin\', setup)');
-    assert.fileContent('src/main/ts/Plugin.ts', 'editor.addButton(\'cool-plugin\',');
+    assert.fileContent('src/main/ts/Plugin.ts', 'editor.ui.registry.addButton(\'cool-plugin\',');
   });
 });
