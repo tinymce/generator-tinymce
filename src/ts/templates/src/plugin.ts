@@ -1,7 +1,7 @@
 import * as kebabCase from "lodash/kebabCase";
 
 const plugin = (editor: any, url: String) => {
-  editor.addButton("<%= camelName %>", {
+  editor.ui.registry.addButton("<%= camelName %>", {
     text: "Kebabify",
     icon: false,
     onclick: () => {
