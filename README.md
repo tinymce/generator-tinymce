@@ -20,3 +20,4 @@ yo tinymce
 [npm-url]: https://npmjs.org/package/generator-tinymce
 [travis-image]: https://travis-ci.org/tinymce/generator-tinymce.svg?branch=master
 [travis-url]: https://travis-ci.org/tinymce/generator-tinymce
+
