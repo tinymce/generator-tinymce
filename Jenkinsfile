@@ -17,5 +17,5 @@ node("primary") {
     }
   }
   def runBuild = load("jenkins-plumbing/standard-build.groovy")
-  runBuild(null, 'ea06cafd-e37d-4b47-b0c9-a32f47c00477', 'git@github.com:tinymce/generator-tinymce.git')
+  runBuild()
 }
