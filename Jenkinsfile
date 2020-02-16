@@ -1,21 +1,10 @@
-properties([
-  disableConcurrentBuilds(),
-  pipelineTriggers([
-    pollSCM('H 0 1 1 1')
-  ])
-])
+#!groovy
+@Library('waluigi@v3.1.0') _
+
+standardProperties()
 
 node("primary") {
-  echo "Clean workspace"
-  cleanWs()
-
-  stage ("Checkout SCM") {
-    checkout scm
-    sh "mkdir -p jenkins-plumbing"
-    dir ("jenkins-plumbing") {
-      git([branch: "master", url:'ssh://git@stash:7999/van/jenkins-plumbing.git', credentialsId: '8aa93893-84cc-45fc-a029-a42f21197bb3'])
-    }
-  }
-  def runBuild = load("jenkins-plumbing/standard-build.groovy")
-  runBuild()
+  checkout scm
+  standardBuild()
 }
+
