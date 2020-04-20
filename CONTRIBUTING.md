@@ -18,8 +18,8 @@ checkout of this codebase:
 Note that you will need `yarn` installed. We may remove that requirement
 in the future. 
 
-Once that's done, you can just run `npm run prepublishOnly` after each 
-change.
+Once that's done, you can just run `npm run prepublishOnly && npm link` 
+after each change.
 
 To test, go to an empty folder and run `yo tinymce`. 
 
