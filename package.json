@@ -22,7 +22,7 @@
     "lodash": "^4.17.11",
     "mkdirp": "^1.0.4",
     "ramda": "^0.27.0",
-    "yeoman-generator": "^4.8.2",
+    "yeoman-generator": "^4.0.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
