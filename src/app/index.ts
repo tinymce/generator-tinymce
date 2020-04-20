@@ -1,5 +1,5 @@
 import * as Generator from 'yeoman-generator';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as yosay from 'yosay';
 import * as path from 'path';
 import { kebabCase } from 'lodash';
