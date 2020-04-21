@@ -16,6 +16,10 @@ Then generate your new project:
 yo tinymce
 ```
 
+# Developing
+
+For information on changing this generator, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 [npm-image]: https://badge.fury.io/js/generator-tinymce.svg
 [npm-url]: https://npmjs.org/package/generator-tinymce
 [travis-image]: https://travis-ci.org/tinymce/generator-tinymce.svg?branch=master

@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as mkdirp from 'mkdirp';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 export const handleDir = (ctx, name: string) => {
   if (path.basename(ctx.destinationPath()) !== name) {

@@ -1,6 +1,6 @@
 import { Pipeline, Logger, GeneralSteps } from '@ephox/agar';
 import { TinyLoader, TinyApis, TinyUi } from '@ephox/mcagar';
-import { UnitTest } from '@ephox/bedrock';
+import { UnitTest } from '@ephox/bedrock-client';
 import Plugin from '../../../main/ts/Plugin';
 
 // This an example of a browser test of the editor.
