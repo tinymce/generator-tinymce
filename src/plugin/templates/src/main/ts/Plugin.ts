@@ -1,15 +1,16 @@
-declare const tinymce: any;
+import { Editor, TinyMCE } from 'tinymce';
 
-const setup = (editor, url) => {
+declare const tinymce: TinyMCE;
+
+const setup = (editor: Editor, url: string): void => {
   editor.ui.registry.addButton('<%= name %>', {
     text: '<%= name %> button',
     onAction: () => {
-      // tslint:disable-next-line:no-console
       editor.setContent('<p>content added from <%= name %></p>');
     }
   });
 };
 
-export default () => {
+export default (): void => {
   tinymce.PluginManager.add('<%= name %>', setup);
 };

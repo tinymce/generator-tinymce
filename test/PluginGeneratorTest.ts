@@ -8,7 +8,10 @@ describe('generator-tinymce:plugin', () => {
       .withPrompts({
         packageName: 'cool-plugin',
         type: 'plugin',
-        description: 'my cool plugin'
+        description: 'my cool plugin',
+        author: 'Tiny Technologies, Inc',
+        email: 'is-accounts@ephox.com',
+        website: 'https://tiny.cloud/'
       })
       .toPromise();
   });
@@ -16,7 +19,7 @@ describe('generator-tinymce:plugin', () => {
   it('creates files', () => {
     assert.file([
       'package.json',
-      'tslint.json',
+      '.eslintrc.js',
       'tsconfig.json',
       'README.md',
       '.editorconfig',
@@ -30,19 +33,16 @@ describe('generator-tinymce:plugin', () => {
       'src/main/ts/core/AddTwo.ts',
       'src/test/ts/browser/PluginTest.ts',
       'src/test/ts/atomic/AddTwoTest.ts'
-      // 'src/index.ts',
-      // 'src/plugin.ts',
-      // 'config/webpack.config.dev.js',
-      // 'config/webpack.config.prod.js'
     ]);
   });
 
   it('has correct content in files', () => {
     assert.fileContent('package.json', '"name": "cool-plugin"');
     assert.fileContent('package.json', '"description": "my cool plugin"');
+    assert.fileContent('package.json', '"author": "Tiny Technologies, Inc"');
     assert.fileContent('package.json', '"license": "Apache-2.0"');
     assert.fileContent('README.md', '# coolPlugin');
-    assert.fileContent('LICENSE.txt', 'Tiny Technologies Inc <is-accounts@ephox.com> (https://tiny.cloud/)');
+    assert.fileContent('LICENSE.txt', 'Tiny Technologies, Inc <is-accounts@ephox.com> (https://tiny.cloud/)');
     assert.fileContent('Gruntfile.js', 'cool-plugin/version.txt');
     assert.fileContent('src/demo/html/index.html', 'cool-plugin demo page');
     assert.fileContent('src/demo/ts/Demo.ts', 'code cool-plugin');

@@ -3,9 +3,9 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 const path = require('path');
 const swag = require('@ephox/swag');
 
-module.exports = function(grunt) {
-  var packageData = grunt.file.readJSON('package.json');
-  var BUILD_VERSION = packageData.version + '-' + (process.env.BUILD_NUMBER ? process.env.BUILD_NUMBER : '0');
+module.exports = (grunt) => {
+  const packageData = grunt.file.readJSON('package.json');
+  const BUILD_VERSION = packageData.version + '-' + (process.env.BUILD_NUMBER ? process.env.BUILD_NUMBER : '0');
   const libPluginPath = 'lib/main/ts/Main.js';
   const scratchPluginPath = 'scratch/compiled/plugin.js';
   const scratchPluginMinPath = 'scratch/compiled/plugin.min.js';
@@ -19,11 +19,11 @@ module.exports = function(grunt) {
       dirs: [ 'dist', 'scratch' ]
     },
 
-    tslint: {
+    eslint: {
       options: {
-        configuration: 'tslint.json'
+        fix: grunt.option('fix')
       },
-      plugin: ['src/**/*.ts']
+      plugin: [ 'src/**/*.ts' ]
     },
 
     shell: {
@@ -67,8 +67,8 @@ module.exports = function(grunt) {
     concat: {
       license: {
         options: {
-          process: function(src) {
-            var buildSuffix = process.env.BUILD_NUMBER
+          process: (src) => {
+            const buildSuffix = process.env.BUILD_NUMBER
               ? '-' + process.env.BUILD_NUMBER
               : '';
             return src.replace(
@@ -96,11 +96,11 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: 'src/text',
-            src: ['license.txt'],
+            src: [ 'license.txt' ],
             dest: 'dist/<%= name %>',
             expand: true
           },
-          { src: ['changelog.txt'], dest: 'dist/<%= name %>', expand: true }
+          { src: [ 'changelog.txt' ], dest: 'dist/<%= name %>', expand: true }
         ]
       }
     },
@@ -115,14 +115,14 @@ module.exports = function(grunt) {
         devtool: 'source-map',
 
         resolve: {
-          extensions: ['.ts', '.js']
+          extensions: [ '.ts', '.js' ]
         },
 
         module: {
           rules: [
             {
               test: /\.js$/,
-              use: ['source-map-loader'],
+              use: [ 'source-map-loader' ],
               enforce: 'pre'
             },
             {
@@ -140,7 +140,7 @@ module.exports = function(grunt) {
           ]
         },
 
-        plugins: [new LiveReloadPlugin(), new CheckerPlugin()],
+        plugins: [ new LiveReloadPlugin(), new CheckerPlugin() ],
 
         output: {
           filename: path.basename(jsDemoDestFile),
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   grunt.loadNpmTasks('@ephox/swag');
 
-  grunt.registerTask('version', 'Creates a version file', function () {
+  grunt.registerTask('version', 'Creates a version file', () => {
     grunt.file.write('dist/<%= name %>/version.txt', BUILD_VERSION);
   });
 

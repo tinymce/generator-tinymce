@@ -26,9 +26,9 @@ export const copyHelper = (ctx) =>
   };
 
 export const gitInit = (ctx, message: string = 'Initial commit.') => {
-  ctx.spawnCommandSync('git', ['init', '--quiet']);
-  ctx.spawnCommandSync('git', ['add', '--all']);
-  ctx.spawnCommandSync('git', ['commit', '-m', message, '--quiet']);
+  ctx.spawnCommandSync('git', [ 'init', '--quiet' ]);
+  ctx.spawnCommandSync('git', [ 'add', '--all' ]);
+  ctx.spawnCommandSync('git', [ 'commit', '-m', message, '--quiet' ]);
   ctx.log(
     '\n' +
     chalk.green('success') + ' Created git repository!' +

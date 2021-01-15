@@ -11,14 +11,14 @@ To test the generator from this source code, run the following from the
 checkout of this codebase:
 
     npm uninstall -g generator-tinymce
-    npm install
-    npm run prepublishOnly
-    npm link
+    yarn install
+    yarn prepublishOnly
+    yarn link
 
 Note that you will need `yarn` installed. We may remove that requirement
 in the future. 
 
-Once that's done, you can just run `npm run prepublishOnly && npm link` 
+Once that's done, you can just run `yarn prepublishOnly && yarn link` 
 after each change.
 
 To test, go to an empty folder and run `yo tinymce`. 
