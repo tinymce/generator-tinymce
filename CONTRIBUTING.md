@@ -15,11 +15,9 @@ checkout of this codebase:
     yarn prepublishOnly
     yarn link
 
-Note that you will need `yarn` installed. We may remove that requirement
-in the future. 
+Note that you will need `yarn` installed. 
 
 Once that's done, you can just run `yarn prepublishOnly && yarn link` 
 after each change.
 
 To test, go to an empty folder and run `yo tinymce`. 
-
