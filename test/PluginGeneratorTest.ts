@@ -10,7 +10,7 @@ describe('generator-tinymce:plugin', () => {
         type: 'plugin',
         description: 'my cool plugin',
         author: 'Tiny Technologies, Inc',
-        email: 'is-accounts@ephox.com',
+        email: 'no-reply@tiny.cloud',
         website: 'https://tiny.cloud/'
       })
       .toPromise();
@@ -42,7 +42,7 @@ describe('generator-tinymce:plugin', () => {
     assert.fileContent('package.json', '"author": "Tiny Technologies, Inc"');
     assert.fileContent('package.json', '"license": "Apache-2.0"');
     assert.fileContent('README.md', '# coolPlugin');
-    assert.fileContent('LICENSE.txt', 'Tiny Technologies, Inc <is-accounts@ephox.com> (https://tiny.cloud/)');
+    assert.fileContent('LICENSE.txt', 'Tiny Technologies, Inc <no-reply@tiny.cloud> (https://tiny.cloud/)');
     assert.fileContent('Gruntfile.js', 'cool-plugin/version.txt');
     assert.fileContent('src/demo/html/index.html', 'cool-plugin demo page');
     assert.fileContent('src/demo/ts/Demo.ts', 'code cool-plugin');

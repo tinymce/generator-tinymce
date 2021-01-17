@@ -10,7 +10,7 @@ module.exports = class PluginGenerator extends Generator {
     packageName: string;
     description: string;
     author: string;
-    skipGit: boolean;
+    initGit: boolean;
   };
   public options: {
     'same-directory': boolean;
@@ -46,10 +46,10 @@ module.exports = class PluginGenerator extends Generator {
         default: ''
       },
       {
-        name: 'skipGit',
-        message: 'Skip git repo initialization?',
+        name: 'initGit',
+        message: 'Initialize git repo?',
         type: 'confirm',
-        default: false
+        default: true
       },
       {
         name: 'author',
@@ -87,7 +87,7 @@ module.exports = class PluginGenerator extends Generator {
   }
 
   public install() {
-    if (!this.props.skipGit) {
+    if (this.props.initGit) {
       utils.gitInit(this, `Initial commit on ${this.props.packageName} TinyMCE plugin.`);
     }
 

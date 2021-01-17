@@ -15,7 +15,7 @@ checkout of this codebase:
     yarn prepublishOnly
     yarn link
 
-Note that you will need `yarn` installed. 
+Note that you will need `yarn` and `yo` installed. 
 
 Once that's done, you can just run `yarn prepublishOnly && yarn link` 
 after each change.
