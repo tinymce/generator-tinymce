@@ -26,7 +26,7 @@ describe('generator-tinymce:plugin', () => {
       '.gitignore',
       'LICENSE.txt',
       'Gruntfile.js',
-      'changelog.txt',
+      'CHANGELOG.txt',
       'src/demo/html/index.html',
       'src/demo/ts/Demo.ts',
       'src/main/ts/Plugin.ts',

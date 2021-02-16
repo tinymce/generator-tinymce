@@ -94,13 +94,7 @@ module.exports = (grunt) => {
     copy: {
       css: {
         files: [
-          {
-            cwd: 'src/text',
-            src: [ 'license.txt' ],
-            dest: 'dist/<%= name %>',
-            expand: true
-          },
-          { src: [ 'changelog.txt' ], dest: 'dist/<%= name %>', expand: true }
+          { src: [ 'CHANGELOG.txt', 'LICENSE.txt' ], dest: 'dist/<%= name %>', expand: true }
         ]
       }
     },

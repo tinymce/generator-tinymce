@@ -38,7 +38,7 @@ module.exports = class TypeScript extends Generator {
     copy('_package.json', 'package.json', { name, description, author });
     copy('README.md', 'README.md', { name, camelName });
     copy('Gruntfile.js', 'Gruntfile.js', { name });
-    copy('changelog.txt', 'changelog.txt');
+    copy('CHANGELOG.txt', 'CHANGELOG.txt');
     copy('src/demo/html/index.html', 'src/demo/html/index.html', { name });
     copy('src/demo/ts/Demo.ts', 'src/demo/ts/Demo.ts', { name });
     copy('src/main/ts/Main.ts', 'src/main/ts/Main.ts', { name });
