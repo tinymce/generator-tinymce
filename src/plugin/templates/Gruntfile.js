@@ -159,7 +159,7 @@ module.exports = (grunt) => {
 
   grunt.registerTask('default', [
     'clean',
-    'tslint',
+    'eslint',
     'shell',
     'rollup',
     'uglify',
