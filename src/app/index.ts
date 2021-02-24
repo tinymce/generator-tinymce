@@ -8,13 +8,15 @@ import * as utils from '../utils';
 module.exports = class PluginGenerator extends Generator {
   public props: {
     packageName: string;
-    type: 'plugins' | 'package';
     description: string;
+    author: string;
+    initGit: boolean;
   };
   public options: {
-    'same-directory': boolean
+    'same-directory': boolean;
   };
-  constructor (args, opts) {
+
+  public constructor(args, opts) {
     super(args, opts);
 
     this.option('same-directory', {
@@ -24,7 +26,7 @@ module.exports = class PluginGenerator extends Generator {
     });
   }
 
-  public prompting () {
+  public prompting() {
     this.log(
       yosay('Welcome to the\n' + chalk.red('TinyMCE package') + '\ngenerator!')
     );
@@ -32,25 +34,28 @@ module.exports = class PluginGenerator extends Generator {
     const prompts = [
       {
         name: 'packageName',
-        message: 'Package name:',
+        message: 'Plugin name:',
         default: path.basename(process.cwd()),
         filter: (str) => kebabCase(str),
         validate: (str) => str.length > 0
       },
-      // {
-      //   name: 'type',
-      //   message: 'Are you creating a package or a plugin',
-      //   type: 'list',
-      //   choices: [
-      //     { name: 'Package', value: 'package' },
-      //     { name: 'Plugin', value: 'plugin' }
-      //   ]
-      // },
       {
         name: 'description',
-        message: 'Add a description',
-        type: 'input' as 'input',
+        message: 'Plugin description (optional):',
+        type: 'input',
         default: ''
+      },
+      {
+        name: 'initGit',
+        message: 'Initialize git repo?',
+        type: 'confirm',
+        default: true
+      },
+      {
+        name: 'author',
+        message: 'What\'s your name?',
+        type: 'input',
+        default: this.user.git.name()
       }
     ];
 
@@ -59,32 +64,32 @@ module.exports = class PluginGenerator extends Generator {
     });
   }
 
-  public default () {
+  public default() {
     const packageName = this.props.packageName;
     const description = this.props.description;
-    const type = 'plugin'; // this.props.type
+    const author = this.props.author;
     if (this.options['same-directory'] === true) {
       this.log('Generating in current directory.');
     } else {
       utils.handleDir(this, packageName);
     }
 
-    this.composeWith(require.resolve('../' + type), { name: packageName, description });
+    this.composeWith(require.resolve('../plugin'), { name: packageName, description, author });
 
     this.composeWith(
       require.resolve('generator-license/app'),
       {
-        name: 'Tiny Technologies Inc',
-        email: 'is-accounts@ephox.com',
-        website: 'https://tiny.cloud/',
-        license: 'Apache-2.0',
+        name: author,
+        defaultLicense: 'Apache-2.0',
         output: 'LICENSE.txt'
       }
     );
   }
 
-  public install () {
-    utils.gitInit(this, `Initial commit on ${this.props.packageName} TinyMCE plugin.`);
+  public install() {
+    if (this.props.initGit) {
+      utils.gitInit(this, `Initial commit on ${this.props.packageName} TinyMCE plugin.`);
+    }
 
     this.installDependencies({
       bower: false,
