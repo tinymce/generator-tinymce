@@ -21,3 +21,7 @@ Once that's done, you can just run `yarn prepublishOnly && yarn link`
 after each change.
 
 To test, go to an empty folder and run `yo tinymce`. 
+
+## Branch Process
+
+This project uses the beehive-flow branch process. See https://github.com/tinymce/beehive-flow/

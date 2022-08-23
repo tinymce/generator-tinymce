@@ -1,6 +1,6 @@
 {
   "name": "generator-tinymce",
-  "version": "1.4.16",
+  "version": "1.4.17-rc",
   "description": "Bootstrap your TinyMCE plugin",
   "author": "Tiny Technologies, Inc",
   "homepage": "https://github.com/tinymce/generator-tinymce",
@@ -27,6 +27,7 @@
     "yosay": "^2.0.2"
   },
   "devDependencies": {
+    "@tinymce/beehive-flow": "^0.18.0",
     "@tinymce/eslint-plugin": "^1.7.2",
     "@types/mocha": "^8.2.0",
     "@types/node": "^14.14.21",
@@ -50,6 +51,7 @@
   "scripts": {
     "build": "gulp",
     "prepublishOnly": "yarn build",
+    "lint": "gulp eslint",
     "test": "gulp test",
     "watch": "gulp watch"
   },
