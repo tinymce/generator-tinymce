@@ -55,5 +55,10 @@
     "test": "gulp test",
     "watch": "gulp watch"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "resolutions": {
+    "source-map": "^0.7.4",
+    "vinyl": "^2.2.0",
+    "vinyl-fs": "^3.0.3"
+  }
 }
